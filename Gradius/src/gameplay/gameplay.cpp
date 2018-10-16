@@ -88,7 +88,6 @@ namespace Juego
 					UpdateMusicStream(musicaFondo);
 				}
 #endif
-				actualizarPosNave();
 				chequearColisionConAsteroide();
 				chequearColisionConBordes();
 				moverAsteroides();

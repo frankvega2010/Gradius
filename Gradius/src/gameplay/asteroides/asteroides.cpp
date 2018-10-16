@@ -39,7 +39,21 @@ namespace Juego
 			aColision = LoadSound("res/sonidos/colision_asteroide.wav");
 #endif
 
-			for (int i = 0; i <cantAsteroidesG; i++)
+			asteroidesG[0].radio = 60;
+
+			asteroidesG[0].pos = { (float)screenWidth/asteroidesG[0].radio*40,(float)screenHeight/2};
+
+			asteroidesG[0].angulo = -90.0f;
+
+			asteroidesG[0].activo = true;
+
+			asteroidesG[0].vel = 150.0f;
+
+			asteroidesG[0].sprite = aSprite;
+
+			asteroidesG[0].rotacionCuerpo = (float)GetRandomValue(0, 1);
+
+			/*for (int i = 0; i <cantAsteroidesG; i++)
 			{
 				asteroidesG[i].radio = 60;
 
@@ -91,7 +105,7 @@ namespace Juego
 				asteroidesP[i].vel = 150.0f;
 				asteroidesP[i].sprite = aSprite;
 				asteroidesP[i].rotacionCuerpo = (float)GetRandomValue(0, 1);
-			}
+			}*/
 		}
 
 		void desinicializarAsteroides()

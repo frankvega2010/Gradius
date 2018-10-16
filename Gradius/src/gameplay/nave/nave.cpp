@@ -21,12 +21,11 @@ namespace Juego
 			{
 				nave.base = screenWidth/30;
 				nave.altura = (nave.base / 2) / tanf(25 * DEG2RAD);
-				nave.rotacion = 0;
-				nave.pos = { (float)screenWidth / 2,(float)screenHeight / 2 };
+				nave.rotacion = 90;
+				nave.pos = { (float)screenWidth / nave.altura*2,(float)screenHeight / 2 };
 				nave.colision = { nave.pos.x + sin(nave.rotacion*DEG2RAD),
 					nave.pos.y - cos(nave.rotacion*DEG2RAD) };
 				nave.radioColision = nave.altura * 2 / 3 + 10;
-				nave.color = WHITE;
 				nave.sprite = LoadTexture("res/nave.png");
 				nave.velocidad = (float)screenWidth/3;
 				nave.aceleracionBase = { 0.8f };
@@ -36,57 +35,23 @@ namespace Juego
 				nave.puntaje = 0;
 			}
 
-			void calcularAnguloRotacion()
-			{
-				vDireccion.x = GetMouseX() - nave.pos.x;
-				vDireccion.y = GetMouseY() - nave.pos.y;
-				
-				nave.rotacion = atan2(vDireccion.y , vDireccion.x)*RAD2DEG+90.0f;
-
-				/*if (IsKeyReleased(KEY_F))
-				{
-					cout << nave.rotacion << endl;
-					cout << "x:" << GetMouseX() << ",y:" << GetMouseY() << endl;
-					cout << "navex:" << nave.pos.x << ", navey:" << nave.pos.y << endl;
-				}*/
-			}
-
-			void normalizarDireccion()
-			{
-				/*vNormalizador.x = vDireccion.x / sqrtf(powf(vDireccion.x, 2) + powf(vDireccion.y, 2));
-				vNormalizador.y = vDireccion.y / sqrtf(powf(vDireccion.x, 2) + powf(vDireccion.y, 2));*/
-			}
-
 			void moverNave()
 			{
-				calcularAnguloRotacion();
+				//calcularAnguloRotacion();
 				//normalizarDireccion();
 				
 				if (!pausa)
 				{
-					if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON))
+					if(IsKeyDown(KEY_UP))
 					{
-						if (nave.detenida)
-						{
-							nave.detenida = false;
-						}
-						
-						nave.anguloAceler = nave.rotacion;
+						nave.pos.y--;
 					}
-
-					nave.aceleracion = { nave.aceleracionBase //* vNormalizador.x 
-										,nave.aceleracionBase //* vNormalizador.y
-									   };
+					if (IsKeyDown(KEY_DOWN))
+					{
+						nave.pos.y++;
+					}
 				}
-			}
-
-			void actualizarPosNave()
-			{
-				if (!nave.detenida)
-				{
-					nave.pos.y -= cos(nave.anguloAceler*DEG2RAD) * nave.velocidad * nave.aceleracion.x * GetFrameTime();
-					nave.pos.x += sin(nave.anguloAceler*DEG2RAD) * nave.velocidad * nave.aceleracion.y * GetFrameTime();
-				}
+				
 			}
 
 			void chequearColisionConBordes()

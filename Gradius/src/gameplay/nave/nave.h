@@ -29,7 +29,6 @@ namespace Juego
 
 		void iniciarNave();
 		void moverNave();
-		void actualizarPosNave();
 		void chequearColisionConBordes();
 		void dibujarNave();
 	}
