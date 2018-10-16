@@ -25,7 +25,7 @@ namespace Juego
 
 		void activarDisparos()
 		{
-			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+			if (IsKeyPressed(KEY_SPACE))
 			{
 				disparos[balaADisp].activo = true;
 				balaADisp++;

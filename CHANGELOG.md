@@ -4,6 +4,6 @@
 ### Added
 - Menu, Pantalla de juego, Gameover y Pausa.
 - Musica y Sonidos.
-- Posibilidad de Mutear
-- Nave y Asteroide que se mueven.
+- Posibilidad de mutear el sonido.
+- Nave y Asteroide que se mueven con las flechas.
 

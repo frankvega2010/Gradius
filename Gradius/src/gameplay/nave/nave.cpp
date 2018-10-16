@@ -56,21 +56,13 @@ namespace Juego
 
 			void chequearColisionConBordes()
 			{
-				if (nave.pos.x < bordes[izquierda])
-				{
-					nave.pos.x = bordes[derecha];
-				}
-				if (nave.pos.x > bordes[derecha])
-				{
-					nave.pos.x = bordes[izquierda];
-				}
-				if (nave.pos.y < bordes[arriba])
-				{
-					nave.pos.y = bordes[abajo];
-				}
-				if (nave.pos.y > bordes[abajo])
+				if (nave.pos.y <= bordes[arriba])
 				{
 					nave.pos.y = bordes[arriba];
+				}
+				if (nave.pos.y >= bordes[abajo])
+				{
+					nave.pos.y = bordes[abajo];
 				}
 			}
 

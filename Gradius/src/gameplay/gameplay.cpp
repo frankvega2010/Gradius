@@ -26,10 +26,8 @@ namespace Juego
 
 		void iniciarBordes()
 		{
-			bordes[arriba] = -nave.altura;
-			bordes[izquierda] = -nave.base;
-			bordes[derecha] = screenWidth + nave.base;
-			bordes[abajo] = screenHeight + nave.altura;
+			bordes[arriba] = nave.base;
+			bordes[abajo] = screenHeight -nave.base;
 		}
 
 		void iniciarComponentesGP()
