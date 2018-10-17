@@ -157,11 +157,11 @@ namespace Juego
 
 					if (asteroidesG[i].rotacionCuerpo > 0)
 					{
-						asteroidesG[i].rotacionCuerpo += 0.3;
+						asteroidesG[i].rotacionCuerpo += 400 * GetFrameTime();
 					}
 					else
 					{
-						asteroidesG[i].rotacionCuerpo-=0.3;
+						asteroidesG[i].rotacionCuerpo-= 400 * GetFrameTime();
 					}
 				}
 			}

@@ -14,8 +14,6 @@ namespace Juego
 
 			Vector2 vDireccion;  //vector que va de la nave a la pos del mouse, sirve para calcular la rotacion
 			Vector2 vNormalizador;
-			static void calcularAnguloRotacion();
-			static void normalizarDireccion();
 
 			void iniciarNave()
 			{
@@ -44,11 +42,11 @@ namespace Juego
 				{
 					if(IsKeyDown(KEY_UP))
 					{
-						nave.pos.y--;
+						nave.pos.y-=500*GetFrameTime();
 					}
 					if (IsKeyDown(KEY_DOWN))
 					{
-						nave.pos.y++;
+						nave.pos.y+=500*GetFrameTime();
 					}
 				}
 				
