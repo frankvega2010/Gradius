@@ -11,18 +11,6 @@ namespace Juego
 {
 	namespace Gameplay
 	{
-		struct Asteroide
-		{
-			Vector2 pos;
-			float radio;
-			float vel;
-			float angulo;
-			Color color;
-			bool activo;
-			Texture2D sprite;
-			float rotacionCuerpo;
-		};
-
 		const int cantAsteroidesG = 5;
 		const int cantAsteroidesM = 15;
 		const int cantAsteroidesP = 30;

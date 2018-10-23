@@ -23,6 +23,7 @@
     <ClCompile Include="..\src\gameover\gameover.cpp" />
     <ClCompile Include="..\src\gameplay\asteroides\asteroides.cpp" />
     <ClCompile Include="..\src\gameplay\disparos\disparos.cpp" />
+    <ClCompile Include="..\src\gameplay\fondo\fondo.cpp" />
     <ClCompile Include="..\src\gameplay\gameplay.cpp" />
     <ClCompile Include="..\src\gameplay\nave\nave.cpp" />
     <ClCompile Include="..\src\gameplay\pausa\pausa.cpp" />
@@ -35,6 +36,7 @@
     <ClInclude Include="..\src\gameover\gameover.h" />
     <ClInclude Include="..\src\gameplay\asteroides\asteroides.h" />
     <ClInclude Include="..\src\gameplay\disparos\disparos.h" />
+    <ClInclude Include="..\src\gameplay\fondo\fondo.h" />
     <ClInclude Include="..\src\gameplay\gameplay.h" />
     <ClInclude Include="..\src\gameplay\nave\nave.h" />
     <ClInclude Include="..\src\gameplay\pausa\pausa.h" />

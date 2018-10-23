@@ -40,6 +40,9 @@
     <Filter Include="Archivos de origen\juego\gameplay\disparos">
       <UniqueIdentifier>{24010cdf-160b-49d4-9cc0-9b335424939a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\juego\gameplay\fondo">
+      <UniqueIdentifier>{8e6a85e6-57bd-405e-82ac-b8acaa41eed4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\menu\menu.cpp">
@@ -72,6 +75,9 @@
     <ClCompile Include="..\src\gameplay\disparos\disparos.cpp">
       <Filter>Archivos de origen\juego\gameplay\disparos</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gameplay\fondo\fondo.cpp">
+      <Filter>Archivos de origen\juego\gameplay\fondo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\menu\menu.h">
@@ -100,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="..\src\gameplay\disparos\disparos.h">
       <Filter>Archivos de origen\juego\gameplay\disparos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameplay\fondo\fondo.h">
+      <Filter>Archivos de origen\juego\gameplay\fondo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
