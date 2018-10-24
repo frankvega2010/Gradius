@@ -18,16 +18,21 @@ namespace Juego
 			};
 			Nave nave;
 
+			int framesCounter;
+
 			Vector2 vDireccion;  //vector que va de la nave a la pos del mouse, sirve para calcular la rotacion
 			Vector2 vNormalizador;
 
 			Rectangle sourceRec;
 
+			static void actualizarSpriteNave();
+
 			void establecerSR()
 			{
+				framesCounter = 0;
 				sourceRec.x = 0;
 				sourceRec.y = 0;
-				sourceRec.width = nave.sprite.width/3;
+				sourceRec.width = nave.sprite.width/5;
 				sourceRec.height = nave.sprite.height;
 			}
 
@@ -36,11 +41,11 @@ namespace Juego
 				nave.base = screenWidth/30;
 				nave.altura = (nave.base / 2) / tanf(25 * DEG2RAD);
 				nave.rotacion = 0;
-				nave.pos = { (float)screenWidth / nave.altura*2,(float)screenHeight / 2 };
+				nave.pos = { (float)screenWidth / nave.altura*3,(float)screenHeight / 2 };
 				nave.colision = { nave.pos.x + sin(nave.rotacion*DEG2RAD),
 					nave.pos.y - cos(nave.rotacion*DEG2RAD) };
 				nave.radioColision = nave.altura * 2 / 3 + 10;
-				nave.sprite = LoadTexture("res/nave (2).png");
+				nave.sprite = LoadTexture("res/nave (1).png");
 				nave.velocidad = (float)screenWidth/3;
 				nave.aceleracionBase = { 0.8f };
 				nave.aceleracion = { 0.0f,0.0f };
@@ -49,6 +54,8 @@ namespace Juego
 				nave.puntaje = 0;
 				establecerSR();
 			}
+
+			
 
 			void moverNave()
 			{
@@ -74,21 +81,32 @@ namespace Juego
 						seMovio = quieta;
 					}
 
-
 					if (seMovio==quieta)
 					{
-						sourceRec.x = 0.0f;
+						actualizarSpriteNave();
 					}
 					if (seMovio==siArriba)
 					{
-						sourceRec.x = nave.sprite.width/3*2;
+						sourceRec.x = nave.sprite.width/5*4;
 					}
 					if (seMovio == siAbajo)
 					{
-						sourceRec.x = nave.sprite.width / 3;
+						sourceRec.x = nave.sprite.width / 5*3;
 					}
 				}
 				
+			}
+
+			void actualizarSpriteNave()
+			{
+				if (framesCounter > 2)
+				{
+					framesCounter = 0;
+				}
+
+				sourceRec.x = framesCounter * nave.sprite.width / 5;
+
+				framesCounter++;
 			}
 
 			void chequearColisionConBordes()
@@ -106,8 +124,8 @@ namespace Juego
 			void dibujarNave()
 			{
 				DrawTexturePro(nave.sprite, sourceRec,
-					{ nave.pos.x , nave.pos.y, (float)nave.sprite.width / 6 , (float)nave.sprite.height /2 },
-					{ (float)nave.sprite.width / 12,(float)nave.sprite.height /4 }, nave.rotacion, WHITE);
+					{ nave.pos.x , nave.pos.y, (float)nave.sprite.width / 8 , (float)nave.sprite.height /1.6f },
+					{ (float)nave.sprite.width / 16,(float)nave.sprite.height /3.2f }, nave.rotacion, WHITE);
 			}
 	}
 }
