@@ -5,7 +5,10 @@ namespace Juego
 {
 	namespace Gameplay
 	{
-
+		void inicializarFondo();
+		void desinicializarFondo();
+		void actualizarFondo();
+		void dibujarFondo();
 	}
 }
 

@@ -54,7 +54,7 @@ namespace Juego
 			{
 				if (!disparos[i].activo)
 				{
-					disparos[i].angulo = nave.rotacion;
+					disparos[i].angulo = 90;
 					disparos[i].pos = nave.pos;
 				}
 			}

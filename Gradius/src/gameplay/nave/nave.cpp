@@ -40,7 +40,7 @@ namespace Juego
 				nave.colision = { nave.pos.x + sin(nave.rotacion*DEG2RAD),
 					nave.pos.y - cos(nave.rotacion*DEG2RAD) };
 				nave.radioColision = nave.altura * 2 / 3 + 10;
-				nave.sprite = LoadTexture("res/nave.png");
+				nave.sprite = LoadTexture("res/nave (2).png");
 				nave.velocidad = (float)screenWidth/3;
 				nave.aceleracionBase = { 0.8f };
 				nave.aceleracion = { 0.0f,0.0f };
@@ -107,7 +107,7 @@ namespace Juego
 			{
 				DrawTexturePro(nave.sprite, sourceRec,
 					{ nave.pos.x , nave.pos.y, (float)nave.sprite.width / 4 , (float)nave.sprite.height *2/3 },
-					{ (float)nave.sprite.width / 8,(float)nave.sprite.height * 4/6 }, nave.rotacion, WHITE);
+					{ (float)nave.sprite.width / 8,(float)nave.sprite.height * 1/3 }, nave.rotacion, WHITE);
 			}
 	}
 }

@@ -6,6 +6,7 @@
 #include "asteroides/asteroides.h"
 #include "disparos/disparos.h"
 #include "pausa/pausa.h"
+#include "fondo/fondo.h"
 
 namespace Juego
 {
@@ -36,6 +37,7 @@ namespace Juego
 			iniciarBordes();
 			iniciarAsteroides();
 			inicializarDisparos();
+			inicializarFondo();
 			botonPausa = LoadTexture("res/pausa/boton pausa.png");
 			fondo = LoadTexture("res/fondo.png");
 #ifdef AUDIO
@@ -60,6 +62,7 @@ namespace Juego
 			UnloadTexture(botonPausa);
 			UnloadTexture(fondo);
 			desinicializarAsteroides();
+			desinicializarFondo();
 		}
 
 		void chequearInputGP()
@@ -91,6 +94,7 @@ namespace Juego
 				moverAsteroides();
 				actualizarDisparos();
 				moverDisparos();
+				actualizarFondo();
 				if (gameOver)
 				{
 					estado = gameover;
@@ -111,6 +115,7 @@ namespace Juego
 		void dibujarGameplay()
 		{
 			DrawTexture(fondo, screenWidth / 2 - fondo.width / 2, screenHeight / 2 - fondo.height / 2, WHITE);
+			dibujarFondo();
 			dibujarNave();
 			dibujarAsteroides();
 			dibujarDisparos();
