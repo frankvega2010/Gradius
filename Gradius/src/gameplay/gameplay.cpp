@@ -114,7 +114,7 @@ namespace Juego
 
 		void dibujarGameplay()
 		{
-			DrawTexture(fondo, screenWidth / 2 - fondo.width / 2, screenHeight / 2 - fondo.height / 2, WHITE);
+			//DrawTexture(fondo, screenWidth / 2 - fondo.width / 2, screenHeight / 2 - fondo.height / 2, WHITE);
 			dibujarFondo();
 			dibujarNave();
 			dibujarAsteroides();

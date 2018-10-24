@@ -36,7 +36,7 @@ namespace Juego
 				nave.base = screenWidth/30;
 				nave.altura = (nave.base / 2) / tanf(25 * DEG2RAD);
 				nave.rotacion = 0;
-				nave.pos = { (float)screenWidth / nave.altura*3,(float)screenHeight / 2 };
+				nave.pos = { (float)screenWidth / nave.altura*2,(float)screenHeight / 2 };
 				nave.colision = { nave.pos.x + sin(nave.rotacion*DEG2RAD),
 					nave.pos.y - cos(nave.rotacion*DEG2RAD) };
 				nave.radioColision = nave.altura * 2 / 3 + 10;
@@ -106,8 +106,8 @@ namespace Juego
 			void dibujarNave()
 			{
 				DrawTexturePro(nave.sprite, sourceRec,
-					{ nave.pos.x , nave.pos.y, (float)nave.sprite.width / 4 , (float)nave.sprite.height *2/3 },
-					{ (float)nave.sprite.width / 8,(float)nave.sprite.height * 1/3 }, nave.rotacion, WHITE);
+					{ nave.pos.x , nave.pos.y, (float)nave.sprite.width / 6 , (float)nave.sprite.height /2 },
+					{ (float)nave.sprite.width / 12,(float)nave.sprite.height /4 }, nave.rotacion, WHITE);
 			}
 	}
 }
