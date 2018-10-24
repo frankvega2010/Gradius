@@ -10,6 +10,12 @@ namespace Juego
 {
 	namespace Gameplay
 	{		
+			enum movNave
+			{
+				siArriba,
+				siAbajo,
+				quieta
+			};
 			Nave nave;
 
 			Vector2 vDireccion;  //vector que va de la nave a la pos del mouse, sirve para calcular la rotacion
@@ -19,9 +25,9 @@ namespace Juego
 
 			void establecerSR()
 			{
-				sourceRec.x = nave.sprite.width/2;
+				sourceRec.x = 0;
 				sourceRec.y = 0;
-				sourceRec.width = nave.sprite.width/2;
+				sourceRec.width = nave.sprite.width/3;
 				sourceRec.height = nave.sprite.height;
 			}
 
@@ -29,12 +35,12 @@ namespace Juego
 			{
 				nave.base = screenWidth/30;
 				nave.altura = (nave.base / 2) / tanf(25 * DEG2RAD);
-				nave.rotacion = 90;
-				nave.pos = { (float)screenWidth / nave.altura*2,(float)screenHeight / 2 };
+				nave.rotacion = 0;
+				nave.pos = { (float)screenWidth / nave.altura*3,(float)screenHeight / 2 };
 				nave.colision = { nave.pos.x + sin(nave.rotacion*DEG2RAD),
 					nave.pos.y - cos(nave.rotacion*DEG2RAD) };
 				nave.radioColision = nave.altura * 2 / 3 + 10;
-				nave.sprite = LoadTexture("res/navespacial.png");
+				nave.sprite = LoadTexture("res/nave.png");
 				nave.velocidad = (float)screenWidth/3;
 				nave.aceleracionBase = { 0.8f };
 				nave.aceleracion = { 0.0f,0.0f };
@@ -49,27 +55,37 @@ namespace Juego
 				//calcularAnguloRotacion();
 				//normalizarDireccion();
 
-				bool seMovio = false;
+				movNave seMovio = quieta;
 				
 				if (!pausa)
 				{
 					if(IsKeyDown(KEY_UP))
 					{
-						seMovio = true;
+						seMovio = siArriba;
 						nave.pos.y-=500*GetFrameTime();
 					}
-					if (IsKeyDown(KEY_DOWN))
+					else if (IsKeyDown(KEY_DOWN))
 					{
-						seMovio = true;
+						seMovio = siAbajo;
 						nave.pos.y+=500*GetFrameTime();
-					}
-					if (seMovio)
-					{
-						sourceRec.x = 0.0f;
 					}
 					else
 					{
-						sourceRec.x = nave.sprite.width/2;
+						seMovio = quieta;
+					}
+
+
+					if (seMovio==quieta)
+					{
+						sourceRec.x = 0.0f;
+					}
+					if (seMovio==siArriba)
+					{
+						sourceRec.x = nave.sprite.width/3*2;
+					}
+					if (seMovio == siAbajo)
+					{
+						sourceRec.x = nave.sprite.width / 3;
 					}
 				}
 				
@@ -90,8 +106,8 @@ namespace Juego
 			void dibujarNave()
 			{
 				DrawTexturePro(nave.sprite, sourceRec,
-					{ nave.pos.x , nave.pos.y, (float)nave.sprite.width / 8 , (float)nave.sprite.height / 4 },
-					{ (float)nave.sprite.width / 16,(float)nave.sprite.height / 8 }, nave.rotacion, WHITE);
+					{ nave.pos.x , nave.pos.y, (float)nave.sprite.width / 4 , (float)nave.sprite.height *2/3 },
+					{ (float)nave.sprite.width / 8,(float)nave.sprite.height * 4/6 }, nave.rotacion, WHITE);
 			}
 	}
 }
