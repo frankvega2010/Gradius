@@ -9,7 +9,16 @@ namespace Juego
 	namespace Gameplay
 	{
 		const int cantAF = 5;
+		const int cantEstrellas = 50;
 		Asteroide asteroidesFondo[cantAF];
+
+		struct Estrella
+		{
+			Vector2 pos;
+			float vel;
+		};
+
+		Estrella estrellas[cantEstrellas];
 
 		void inicializarFondo()
 		{
@@ -22,6 +31,13 @@ namespace Juego
 				asteroidesFondo[i].rotacionCuerpo = 0.0f;
 				asteroidesFondo[i].vel = (float)GetRandomValue(500,600);
 				asteroidesFondo[i].radio = 30;
+			}
+
+			for (int i = 0; i < cantEstrellas; i++)
+			{
+				estrellas[i].pos.x = GetRandomValue(0, screenWidth);
+				estrellas[i].pos.y = GetRandomValue(0, screenHeight);
+				estrellas[i].vel = 40.0f;
 			}
 		}
 
@@ -44,6 +60,14 @@ namespace Juego
 					asteroidesFondo[i].pos.y = GetRandomValue(0, screenHeight);
 				}
 			}
+
+			for (int i = 0; i < cantEstrellas; i++)
+			{
+				if (estrellas[i].pos.x < 0)
+				{
+					estrellas[i].pos.x = screenWidth + 30;
+				}
+			}
 		}
 
 		void actualizarFondo()
@@ -54,6 +78,10 @@ namespace Juego
 				asteroidesFondo[i].rotacionCuerpo -= 400 * GetFrameTime();
 				asteroidesFondo[i].pos.x -= asteroidesFondo[i].vel*GetFrameTime();
 			}
+			for (int i = 0; i < cantEstrellas; i++)
+			{
+				estrellas[i].pos.x -= estrellas[i].vel*GetFrameTime();
+			}
 		}
 
 		void dibujarFondo()
@@ -63,7 +91,11 @@ namespace Juego
 				DrawTexturePro(asteroidesFondo[i].sprite, { 0.0f,0.0f,(float)asteroidesFondo[i].sprite.width,(float)asteroidesFondo[i].sprite.height },
 					{ asteroidesFondo[i].pos.x,asteroidesFondo[i].pos.y,(float)asteroidesFondo[i].sprite.width/15,(float)asteroidesFondo[i].sprite.height/15 },
 					{ (float)asteroidesFondo[i].sprite.width / 30, (float)asteroidesFondo[i].sprite.height / 30 }, asteroidesFondo[i].rotacionCuerpo, WHITE);
+			}
 
+			for (int i = 0; i < cantEstrellas; i++)
+			{
+				DrawPixel(estrellas[i].pos.x, estrellas[i].pos.y, WHITE);
 			}
 		}
 	}
