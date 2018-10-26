@@ -100,7 +100,7 @@ namespace Juego
 				{
 					estado = gameover;
 				}
-				if (nave.puntaje ==5)
+				if (nave.puntaje ==cantAsteroidesG*5)
 				{
 					gano = true;
 					gameOver = true;
