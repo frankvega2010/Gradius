@@ -12,7 +12,6 @@ namespace Juego
 	{
 		float limitesAsteroidesFondo[4];
 		const int cantAF = 5;
-		const int cantEstrellas = 50;
 		const int cantPiezasFondo = 3;
 		Asteroide asteroidesFondo[cantAF];
 		static int framesCounter = 0;
@@ -36,14 +35,7 @@ namespace Juego
 			Color brillo;
 		};
 
-		struct Estrella
-		{
-			Vector2 pos;
-			float vel;
-		};
-
 		Fondo fondo[cantPiezasFondo];
-		Estrella estrellas[cantEstrellas];
 		Planeta planeta;
 
 		void inicializarLimites()
@@ -60,10 +52,6 @@ namespace Juego
 			{
 				fondo[i].sprite = LoadTexture("res/assets/espacio.png");
 				fondo[i].vel = 100.0f;
-				/*fondo[i].sourceRec.x = 0;
-				fondo[i].sourceRec.y = 0;
-				fondo[i].sourceRec.width = fondo[i].sprite.width;
-				fondo[i].sourceRec.height = fondo[i].sprite.height;*/
 			}
 			
 			fondo[0].pos = { 0.0f,0.0f };
@@ -87,13 +75,6 @@ namespace Juego
 			}
 
 			inicializarLimites();
-
-			for (int i = 0; i < cantEstrellas; i++)
-			{
-				estrellas[i].pos.x = GetRandomValue(0, screenWidth);
-				estrellas[i].pos.y = GetRandomValue(0, screenHeight);
-				estrellas[i].vel = 100.0f;
-			}
 
 			planeta.sprite = LoadTexture("res/assets/planetas_constelaciones.png");
 			planeta.vel = 80.0f;
@@ -156,14 +137,6 @@ namespace Juego
 					asteroidesFondo[i].angulo = GetRandomValue(-360, 360);
 					asteroidesFondo[i].vel = (float)GetRandomValue(150, 200);
 					tocoLimite = false;
-				}
-			}
-
-			for (int i = 0; i < cantEstrellas; i++)
-			{
-				if (estrellas[i].pos.x < 0)
-				{
-					estrellas[i].pos.x = screenWidth + 30;
 				}
 			}
 
@@ -267,17 +240,10 @@ namespace Juego
 					asteroidesFondo[i].sourceRec.x = asteroidesFondo[0].sprite.width / 2;
 				}
 			}
-			
-
-			for (int i = 0; i < cantEstrellas; i++)
-			{
-				estrellas[i].pos.x -= estrellas[i].vel*GetFrameTime();
-			}
 		}
 
 		void dibujarFondo()
 		{
-			
 			for (int i = 0; i < cantPiezasFondo; i++)
 			{
 				DrawTexture(fondo[i].sprite, fondo[i].pos.x, fondo[i].pos.y, WHITE);
