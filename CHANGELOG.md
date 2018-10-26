@@ -7,7 +7,7 @@
 - Posibilidad de mutear el sonido.
 - Nave y Asteroide que se mueven con las flechas.
 
-## [0.3] - 24-10-2018
+## [0.2] - 24-10-2018
 ### Added
 - nave totalmente nueva
 - estrellas y asteroides con sprite propio de fondo
