@@ -13,9 +13,17 @@ namespace Juego
 		float limitesAsteroidesFondo[4];
 		const int cantAF = 5;
 		const int cantEstrellas = 50;
+		const int cantPiezasFondo = 3;
 		Asteroide asteroidesFondo[cantAF];
-		static Rectangle sourceRec;
 		static int framesCounter = 0;
+
+		struct Fondo
+		{
+			Texture2D sprite;
+			Vector2 pos;
+			float vel;
+			//Rectangle sourceRec;
+		};
 
 		struct Planeta
 		{
@@ -34,6 +42,7 @@ namespace Juego
 			float vel;
 		};
 
+		Fondo fondo[cantPiezasFondo];
 		Estrella estrellas[cantEstrellas];
 		Planeta planeta;
 
@@ -47,9 +56,23 @@ namespace Juego
 
 		void inicializarFondo()
 		{
+			for (int i = 0; i < cantPiezasFondo; i++)
+			{
+				fondo[i].sprite = LoadTexture("res/assets/espacio.png");
+				fondo[i].vel = 100.0f;
+				/*fondo[i].sourceRec.x = 0;
+				fondo[i].sourceRec.y = 0;
+				fondo[i].sourceRec.width = fondo[i].sprite.width;
+				fondo[i].sourceRec.height = fondo[i].sprite.height;*/
+			}
+			
+			fondo[0].pos = { 0.0f,0.0f };
+			fondo[1].pos = { fondo[0].pos.x + fondo[0].sprite.width,fondo[0].pos.y };
+			fondo[2].pos = { fondo[1].pos.x + fondo[1].sprite.width,fondo[1].pos.y };
+
 			for (int i = 0; i < cantAF; i++)
 			{
-				asteroidesFondo[i].sprite = LoadTexture("res/asteroide fondo.png");
+				asteroidesFondo[i].sprite = LoadTexture("res/assets/asteroide fondo.png");
 				asteroidesFondo[i].pos.x = GetRandomValue(screenWidth / 2, screenWidth);
 				asteroidesFondo[i].pos.y = GetRandomValue(0, screenHeight);
 				asteroidesFondo[i].activo = true;
@@ -57,12 +80,11 @@ namespace Juego
 				asteroidesFondo[i].vel = (float)GetRandomValue(150,200);
 				asteroidesFondo[i].radio = 30;
 				asteroidesFondo[i].angulo = GetRandomValue(-360, 360);
+				asteroidesFondo[i].sourceRec.x = 0;
+				asteroidesFondo[i].sourceRec.y = 0;
+				asteroidesFondo[i].sourceRec.height = asteroidesFondo[i].sprite.height;
+				asteroidesFondo[i].sourceRec.width = asteroidesFondo[i].sprite.width / 2;
 			}
-
-			sourceRec.x = 0;
-			sourceRec.y = 0;
-			sourceRec.height = asteroidesFondo[0].sprite.height;
-			sourceRec.width = asteroidesFondo[0].sprite.width / 2;
 
 			inicializarLimites();
 
@@ -73,7 +95,7 @@ namespace Juego
 				estrellas[i].vel = 100.0f;
 			}
 
-			planeta.sprite = LoadTexture("res/planetas_constelaciones.png");
+			planeta.sprite = LoadTexture("res/assets/planetas_constelaciones.png");
 			planeta.vel = 80.0f;
 			planeta.sourceRec.x = 0;
 			planeta.sourceRec.y = 0;
@@ -89,6 +111,13 @@ namespace Juego
 			for (int i = 0; i < cantAF; i++)
 			{
 				UnloadTexture(asteroidesFondo[i].sprite);
+			}
+
+			UnloadTexture(planeta.sprite);
+
+			for (int i = 0; i < cantPiezasFondo; i++)
+			{
+				UnloadTexture(fondo[i].sprite);
 			}
 		}
 
@@ -137,6 +166,18 @@ namespace Juego
 					estrellas[i].pos.x = screenWidth + 30;
 				}
 			}
+
+			if (fondo[0].pos.x + fondo[0].sprite.width <= 0)
+			{
+				fondo[0].pos.x = fondo[2].pos.x + fondo[2].sprite.width;
+			}
+			for (int i = 1; i < cantPiezasFondo; i++)
+			{
+				if (fondo[i].pos.x + fondo[i].sprite.width <= 0)
+				{
+					fondo[i].pos.x = fondo[i-1].pos.x + fondo[i-1].sprite.width;
+				}
+			}
 		}
 
 		void actualizarFondo()
@@ -147,6 +188,11 @@ namespace Juego
 				asteroidesFondo[i].rotacionCuerpo -= 400 * GetFrameTime();
 				asteroidesFondo[i].pos.x += sin(asteroidesFondo[i].angulo*DEG2RAD)*asteroidesFondo[i].vel*GetFrameTime();
 				asteroidesFondo[i].pos.y -= cos(asteroidesFondo[i].angulo*DEG2RAD)*asteroidesFondo[i].vel*GetFrameTime();
+			}
+
+			for (int i = 0; i < cantPiezasFondo; i++)
+			{
+				fondo[i].pos.x -= fondo[i].vel*GetFrameTime();
 			}
 
 			framesCounter++;
@@ -210,13 +256,16 @@ namespace Juego
 				framesCounter = 0;
 			}
 
-			if (framesCounter < 500)
+			for (int i = 0; i < cantAF;i++)
 			{
-				sourceRec.x = 0;
-			}
-			else
-			{
-				sourceRec.x = asteroidesFondo[0].sprite.width / 2;
+				if (framesCounter < 500)
+				{
+					asteroidesFondo[i].sourceRec.x = 0;
+				}
+				else
+				{
+					asteroidesFondo[i].sourceRec.x = asteroidesFondo[0].sprite.width / 2;
+				}
 			}
 			
 
@@ -229,20 +278,20 @@ namespace Juego
 		void dibujarFondo()
 		{
 			
-			for (int i = 0; i < cantEstrellas; i++)
+			for (int i = 0; i < cantPiezasFondo; i++)
 			{
-				DrawPixel(estrellas[i].pos.x, estrellas[i].pos.y, WHITE);
+				DrawTexture(fondo[i].sprite, fondo[i].pos.x, fondo[i].pos.y, WHITE);
 			}
 
 			if ((planeta.numero >=6 && planeta.numero <= 8)||planeta.numero>10)
 			{
-				planeta.brillo = GRAY;
 				if (planeta.numero > 10)
 				{
 					planeta.vel = 100.0f;
 				}
 				else
 				{
+					planeta.brillo = GRAY;
 					planeta.vel = 80.0f;
 				}
 			}
@@ -261,9 +310,9 @@ namespace Juego
 
 			for (int i = 0; i < cantAF; i++)
 			{
-				DrawTexturePro(asteroidesFondo[i].sprite, sourceRec,
+				DrawTexturePro(asteroidesFondo[i].sprite, asteroidesFondo[i].sourceRec,
 					{ asteroidesFondo[i].pos.x,asteroidesFondo[i].pos.y,(float)asteroidesFondo[i].sprite.width / 7.5f,(float)asteroidesFondo[i].sprite.height / 3.25f },
-					{ (float)asteroidesFondo[i].sprite.width / 15, (float)asteroidesFondo[i].sprite.height / 7.5f }, asteroidesFondo[i].rotacionCuerpo, BROWN);
+					{ (float)asteroidesFondo[i].sprite.width / 15, (float)asteroidesFondo[i].sprite.height / 7.5f }, asteroidesFondo[i].rotacionCuerpo, DARKBROWN);
 			}
 		}
 	}

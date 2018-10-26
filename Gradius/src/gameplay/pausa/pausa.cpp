@@ -21,11 +21,11 @@ namespace Juego
 
 		void iniciarComponentesPausa()
 		{
-			botonDespausa = LoadTexture("res/pausa/boton despausa.png");
-			botonMenu = LoadTexture("res/pausa/volver al menu.png");
-			botonMenuP = LoadTexture("res/pausa/volver al menuP.png");
-			botonReiniciar = LoadTexture("res/pausa/reiniciar juego.png");
-			botonReiniciarP = LoadTexture("res/pausa/reiniciar juegoP.png");
+			botonDespausa = LoadTexture("res/assets/pausa/boton despausa.png");
+			botonMenu = LoadTexture("res/assets/pausa/volver al menu.png");
+			botonMenuP = LoadTexture("res/assets/pausa/volver al menuP.png");
+			botonReiniciar = LoadTexture("res/assets/pausa/reiniciar juego.png");
+			botonReiniciarP = LoadTexture("res/assets/pausa/reiniciar juegoP.png");
 			reiniciarB = botonReiniciar;
 			menuB = botonMenu;
 		}

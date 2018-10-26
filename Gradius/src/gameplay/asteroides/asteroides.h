@@ -16,6 +16,7 @@ namespace Juego
 			bool activo;
 			Texture2D sprite;
 			float rotacionCuerpo;
+			Rectangle sourceRec; // solo para los del fondo
 		};
 
 		extern const int cantAsteroidesG;

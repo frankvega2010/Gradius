@@ -23,13 +23,13 @@ namespace Juego
 
 		void inicializarMenu()
 		{
-			titulo = LoadTexture("res/menu/asteroids titulo.png");
-			botonJugar = LoadTexture("res/menu/boton jugar.png");
-			botonCreditos = LoadTexture("res/menu/boton creditos.png");
-			botonJugarP = LoadTexture("res/menu/boton jugarP.png");
-			botonCreditosP = LoadTexture("res/menu/boton creditosP.png");
-			botonSalir = LoadTexture("res/menu/boton salir.png");
-			botonSalirP = LoadTexture("res/menu/boton salirP.png");
+			titulo = LoadTexture("res/assets/menu/asteroids titulo.png");
+			botonJugar = LoadTexture("res/assets/menu/boton jugar.png");
+			botonCreditos = LoadTexture("res/assets/menu/boton creditos.png");
+			botonJugarP = LoadTexture("res/assets/menu/boton jugarP.png");
+			botonCreditosP = LoadTexture("res/assets/menu/boton creditosP.png");
+			botonSalir = LoadTexture("res/assets/menu/boton salir.png");
+			botonSalirP = LoadTexture("res/assets/menu/boton salirP.png");
 			jugarB = botonJugar;
 			creditosB = botonCreditos;
 			salirB = botonSalir;

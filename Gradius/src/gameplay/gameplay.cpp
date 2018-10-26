@@ -38,10 +38,10 @@ namespace Juego
 			iniciarAsteroides();
 			inicializarDisparos();
 			inicializarFondo();
-			botonPausa = LoadTexture("res/pausa/boton pausa.png");
-			fondo = LoadTexture("res/fondo.png");
+			botonPausa = LoadTexture("res/assets/pausa/boton pausa.png");
+			fondo = LoadTexture("res/assets/fondo.png");
 #ifdef AUDIO
-			musicaFondo = LoadMusicStream("res/sonidos/musica espacio.ogg");
+			musicaFondo = LoadMusicStream("res/assets/sonidos/musica espacio.ogg");
 			if (haySonido)
 			{
 				PlayMusicStream(musicaFondo);

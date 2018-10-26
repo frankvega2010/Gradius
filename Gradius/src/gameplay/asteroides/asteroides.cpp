@@ -22,9 +22,9 @@ namespace Juego
 
 		void iniciarAsteroides()
 		{
-			aSprite = LoadTexture("res/asteroide.png");
+			aSprite = LoadTexture("res/assets/asteroide.png");
 #ifdef AUDIO
-			aColision = LoadSound("res/sonidos/colision_asteroide.wav");
+			aColision = LoadSound("res/assets/sonidos/colision_asteroide.wav");
 #endif
 
 			asteroidesG[0].radio = 60;

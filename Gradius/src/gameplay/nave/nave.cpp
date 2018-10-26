@@ -45,7 +45,7 @@ namespace Juego
 				nave.colision = { nave.pos.x + sin(nave.rotacion*DEG2RAD),
 					nave.pos.y - cos(nave.rotacion*DEG2RAD) };
 				nave.radioColision = nave.altura * 2 / 3 + 10;
-				nave.sprite = LoadTexture("res/nave (2).png");
+				nave.sprite = LoadTexture("res/assets/nave (2).png");
 				nave.velocidad = (float)screenWidth/3;
 				nave.aceleracionBase = { 0.8f };
 				nave.aceleracion = { 0.0f,0.0f };

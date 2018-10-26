@@ -1,13 +1,9 @@
 # Changelog
 
-## [0.1] - 16-10-2018
-### Added
-- Menu, Pantalla de juego, Gameover y Pausa.
-- Musica y Sonidos.
-- Posibilidad de mutear el sonido.
-- Nave y Asteroide que se mueven con las flechas.
+## [proximamente] - 26-10-2018
+- el fondo ahora es un sprite
 
-## [0.2] - 24-10-2018
+## [0.2] - 25-10-2018
 ### Added
 - nave totalmente nueva
 - estrellas y asteroides con sprite propio de fondo
@@ -15,3 +11,9 @@
 - el fuego que sale de la nave tiene efecto
 - agregados planetas y constelaciones de fondo
 
+## [0.1] - 16-10-2018
+### Added
+- Menu, Pantalla de juego, Gameover y Pausa.
+- Musica y Sonidos.
+- Posibilidad de mutear el sonido.
+- Nave y Asteroide que se mueven con las flechas.

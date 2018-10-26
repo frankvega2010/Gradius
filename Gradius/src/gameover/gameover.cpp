@@ -23,13 +23,13 @@ namespace Juego
 
 		void inicializarGO()
 		{
-			fondo = LoadTexture("res/fondo portada.png");
-			felicidades = LoadTexture("res/gameover/felicidades.png");
-			perdiste = LoadTexture("res/gameover/perdiste0.png");
-			volverAJ = LoadTexture("res/gameover/volver a jugar.png");
-			volverAJP = LoadTexture("res/gameover/volver a jugarP.png");
-			volverAM = LoadTexture("res/pausa/volver al menu.png");
-			volverAMP = LoadTexture("res/pausa/volver al menuP.png");
+			fondo = LoadTexture("res/assets/fondo portada.png");
+			felicidades = LoadTexture("res/assets/gameover/felicidades.png");
+			perdiste = LoadTexture("res/assets/gameover/perdiste0.png");
+			volverAJ = LoadTexture("res/assets/gameover/volver a jugar.png");
+			volverAJP = LoadTexture("res/assets/gameover/volver a jugarP.png");
+			volverAM = LoadTexture("res/assets/pausa/volver al menu.png");
+			volverAMP = LoadTexture("res/assets/pausa/volver al menuP.png");
 			jugarB = volverAJ;
 			volverMB = volverAM;
 			resultado = perdiste;
