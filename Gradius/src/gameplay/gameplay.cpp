@@ -39,7 +39,6 @@ namespace Juego
 			inicializarDisparos();
 			inicializarFondo();
 			botonPausa = LoadTexture("res/assets/pausa/boton pausa.png");
-			fondo = LoadTexture("res/assets/fondo.png");
 #ifdef AUDIO
 			musicaFondo = LoadMusicStream("res/assets/sonidos/musica espacio.ogg");
 			if (haySonido)
@@ -60,7 +59,6 @@ namespace Juego
 #endif
 			UnloadTexture(nave.sprite);
 			UnloadTexture(botonPausa);
-			UnloadTexture(fondo);
 			desinicializarAsteroides();
 			desinicializarFondo();
 		}
@@ -89,7 +87,6 @@ namespace Juego
 					UpdateMusicStream(musicaFondo);
 				}
 #endif
-				//actualizarNave();
 				chequearColisionConAsteroide();
 				chequearColisionConBordes();
 				moverAsteroides();
@@ -115,7 +112,6 @@ namespace Juego
 
 		void dibujarGameplay()
 		{
-			//DrawTexture(fondo, screenWidth / 2 - fondo.width / 2, screenHeight / 2 - fondo.height / 2, WHITE);
 			dibujarFondo();
 			dibujarDisparos();
 			dibujarNave();
