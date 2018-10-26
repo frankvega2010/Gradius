@@ -10,7 +10,8 @@
 ## [0.3] - 24-10-2018
 ### Added
 - nave totalmente nueva
-- estrellas y asteroides de fondo
+- estrellas y asteroides con sprite propio de fondo
 - efecto parallax, parece que la nave avanza
 - el fuego que sale de la nave tiene efecto
+- agregados planetas de fondo
 
