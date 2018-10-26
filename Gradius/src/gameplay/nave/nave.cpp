@@ -18,12 +18,12 @@ namespace Juego
 			};
 			Nave nave;
 
-			int framesCounter;
+			static int framesCounter;
 
 			Vector2 vDireccion;  //vector que va de la nave a la pos del mouse, sirve para calcular la rotacion
 			Vector2 vNormalizador;
 
-			Rectangle sourceRec;
+			static Rectangle sourceRec;
 
 			static void actualizarSpriteNave();
 

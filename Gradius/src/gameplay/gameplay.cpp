@@ -117,9 +117,10 @@ namespace Juego
 		{
 			//DrawTexture(fondo, screenWidth / 2 - fondo.width / 2, screenHeight / 2 - fondo.height / 2, WHITE);
 			dibujarFondo();
+			dibujarDisparos();
 			dibujarNave();
 			dibujarAsteroides();
-			dibujarDisparos();
+			
 			DrawText(FormatText("%i", nave.puntaje),
 								screenWidth - screenWidth / 10, screenHeight / 30,
 								screenWidth*screenHeight / 10800, MAGENTA);

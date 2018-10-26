@@ -12,4 +12,5 @@
 - nave totalmente nueva
 - estrellas y asteroides de fondo
 - efecto parallax, parece que la nave avanza
+- el fuego que sale de la nave tiene efecto
 
