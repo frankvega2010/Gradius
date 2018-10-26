@@ -35,7 +35,7 @@ namespace Juego
 
 			asteroidesG[0].activo = true;
 
-			asteroidesG[0].vel = 150.0f;
+			asteroidesG[0].vel = 200.0f;
 
 			asteroidesG[0].sprite = aSprite;
 

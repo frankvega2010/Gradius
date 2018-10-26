@@ -73,13 +73,13 @@ namespace Juego
 				estrellas[i].vel = 100.0f;
 			}
 
-			planeta.sprite = LoadTexture("res/planetas.png");
+			planeta.sprite = LoadTexture("res/planetas_constelaciones.png");
 			planeta.vel = 80.0f;
 			planeta.sourceRec.x = 0;
 			planeta.sourceRec.y = 0;
 			planeta.sourceRec.height = planeta.sprite.height;
-			planeta.sourceRec.width = planeta.sprite.width / 4;
-			planeta.pos = { (float)screenWidth + planeta.sprite.width / 4,
+			planeta.sourceRec.width = planeta.sprite.width / 8;
+			planeta.pos = { (float)screenWidth + planeta.sprite.width / 8,
 							(float)GetRandomValue(planeta.sprite.height,screenHeight - planeta.sprite.height) };
 			planeta.activo = false;
 		}
@@ -153,10 +153,10 @@ namespace Juego
 
 			if (!planeta.activo)
 			{
-				planeta.numero = GetRandomValue(0, 50);
+				planeta.numero = GetRandomValue(0, 100);
 			}
 
-			if (planeta.numero <= 10)
+			if (planeta.numero <= 20)
 			{
 				planeta.activo = true;
 				if (planeta.numero <= 3)
@@ -165,15 +165,31 @@ namespace Juego
 				}
 				else if (planeta.numero <= 5)
 				{
-					planeta.sourceRec.x = planeta.sprite.width / 4;
+					planeta.sourceRec.x = planeta.sprite.width / 8;
 				}
 				else if (planeta.numero <= 8)
 				{
-					planeta.sourceRec.x = planeta.sprite.width / 2;
+					planeta.sourceRec.x = planeta.sprite.width / 8*2;
+				}
+				else if (planeta.numero<=10)
+				{
+					planeta.sourceRec.x = planeta.sprite.width / 8*3;
+				}
+				else if (planeta.numero <= 13)
+				{
+					planeta.sourceRec.x = planeta.sprite.width / 8 * 4;
+				}
+				else if (planeta.numero <= 15)
+				{
+					planeta.sourceRec.x = planeta.sprite.width / 8 * 5;
+				}
+				else if (planeta.numero <= 18)
+				{
+					planeta.sourceRec.x = planeta.sprite.width / 8 * 6;
 				}
 				else
 				{
-					planeta.sourceRec.x = planeta.sprite.width / 4 * 3;
+					planeta.sourceRec.x = planeta.sprite.width / 8 * 7;
 				}
 			}
 
@@ -182,9 +198,9 @@ namespace Juego
 				planeta.pos.x -= planeta.vel*GetFrameTime();
 			}
 
-			if (planeta.pos.x < -planeta.sprite.width / 4)
+			if (planeta.pos.x < -planeta.sprite.width / 8)
 			{
-				planeta.pos.x = screenWidth + planeta.sprite.width / 4;
+				planeta.pos.x = screenWidth + planeta.sprite.width / 8;
 				planeta.pos.y = GetRandomValue(planeta.sprite.height, screenHeight - planeta.sprite.height);
 				planeta.activo = false;
 			}
@@ -218,20 +234,29 @@ namespace Juego
 				DrawPixel(estrellas[i].pos.x, estrellas[i].pos.y, WHITE);
 			}
 
-			if (planeta.numero == 10 || planeta.numero == 9)
+			if ((planeta.numero >=6 && planeta.numero <= 8)||planeta.numero>10)
 			{
 				planeta.brillo = GRAY;
+				if (planeta.numero > 10)
+				{
+					planeta.vel = 100.0f;
+				}
+				else
+				{
+					planeta.vel = 80.0f;
+				}
 			}
 			else
 			{
 				planeta.brillo = WHITE;
+				planeta.vel = 80.0f;
 			}
 
 			if (planeta.activo)
 			{
 				DrawTexturePro(planeta.sprite, planeta.sourceRec,
-					{ planeta.pos.x,planeta.pos.y,(float)planeta.sprite.width / 4,(float)planeta.sprite.height }, 
-					{ (float)planeta.sprite.width / 8,(float)planeta.sprite.height }, 0, planeta.brillo);
+					{ planeta.pos.x,planeta.pos.y,(float)planeta.sprite.width / 8,(float)planeta.sprite.height }, 
+					{ (float)planeta.sprite.width / 16,(float)planeta.sprite.height }, 0, planeta.brillo);
 			}
 
 			for (int i = 0; i < cantAF; i++)

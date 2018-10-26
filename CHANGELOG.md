@@ -13,5 +13,5 @@
 - estrellas y asteroides con sprite propio de fondo
 - efecto parallax, parece que la nave avanza
 - el fuego que sale de la nave tiene efecto
-- agregados planetas de fondo
+- agregados planetas y constelaciones de fondo
 
