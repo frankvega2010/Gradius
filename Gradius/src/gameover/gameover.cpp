@@ -62,8 +62,8 @@ namespace Juego
 
 			if (chequearBoton(volverMB, volverAM, volverAMP,
 				(screenWidth - volverMB.width) / 2, (screenWidth - volverMB.width) / 2 + volverMB.width,
-				screenHeight - (jugarB.height * 2 + jugarB.height),
-				(screenHeight - (jugarB.height * 2 + jugarB.height)) + jugarB.height))
+				screenHeight - (volverMB.height + volverMB.height / 2),
+				screenHeight - (volverMB.height + volverMB.height / 2) + volverMB.height))
 			{
 				estado = menu;
 			}
