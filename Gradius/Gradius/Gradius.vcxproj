@@ -30,6 +30,7 @@
     <ClCompile Include="..\src\juego.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\menu\menu.cpp" />
+    <ClCompile Include="botones.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\creditos\creditos.h" />
@@ -42,6 +43,7 @@
     <ClInclude Include="..\src\gameplay\pausa\pausa.h" />
     <ClInclude Include="..\src\juego.h" />
     <ClInclude Include="..\src\menu\menu.h" />
+    <ClInclude Include="botones.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

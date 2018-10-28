@@ -124,7 +124,6 @@ namespace Juego
 				if(estadoA==juegoPausado)
 				{
 					Gameplay::desinicializarPausa();
-					//HideCursor();
 				}
 				if (estadoA == menu)
 				{
