@@ -1,6 +1,6 @@
 # Changelog
 
-## [proximamente] - 26-10-2018
+## [0.3] - 28-10-2018
 - el fondo ahora es un sprite
 - agregados dos asteroides enemigos
 - solucionado el bug del puntaje infinito
