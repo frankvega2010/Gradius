@@ -12,9 +12,9 @@ namespace Juego
 	namespace Gameplay
 	{
 		const int cantAsteroidesG = 3;
-		Asteroide asteroidesG[cantAsteroidesG];
-		Texture2D aSprite;
-		Sound aColision;
+		static Asteroide asteroidesG[cantAsteroidesG];
+		static Texture2D aSprite;
+		static Sound aColision;
 
 		void iniciarAsteroides()
 		{

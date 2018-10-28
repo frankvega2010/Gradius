@@ -8,10 +8,10 @@ namespace Juego
 {
 	namespace Creditos
 	{
-		Texture2D creditosT;
-		Texture2D atrasB;
-		Texture2D botonAtras;
-		Texture2D botonAtrasP;
+		static Texture2D creditosT;
+		static Texture2D atrasB;
+		static Texture2D botonAtras;
+		static Texture2D botonAtrasP;
 
 		void inicializarCreditos()
 		{

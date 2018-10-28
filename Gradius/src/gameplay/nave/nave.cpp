@@ -20,14 +20,11 @@ namespace Juego
 
 			static int framesCounter;
 
-			Vector2 vDireccion;  //vector que va de la nave a la pos del mouse, sirve para calcular la rotacion
-			Vector2 vNormalizador;
-
 			static Rectangle sourceRec;
 
 			static void actualizarSpriteNave();
 
-			void establecerSR()
+			static void establecerSR()
 			{
 				framesCounter = 0;
 				sourceRec.x = 0;
@@ -55,13 +52,8 @@ namespace Juego
 				establecerSR();
 			}
 
-			
-
 			void moverNave()
 			{
-				//calcularAnguloRotacion();
-				//normalizarDireccion();
-
 				movNave seMovio = quieta;
 				
 				if (!pausa)

@@ -21,7 +21,6 @@ namespace Juego
 			Texture2D sprite;
 			Vector2 pos;
 			float vel;
-			//Rectangle sourceRec;
 		};
 
 		struct Planeta
