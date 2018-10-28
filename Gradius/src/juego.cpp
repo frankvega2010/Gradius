@@ -247,7 +247,7 @@ namespace Juego
 			dibujarJuego();
 
 			//-------------
-			if (Menu::salir)
+			if (Menu::salir || WindowShouldClose())
 			{
 				enjuego=false;
 			}

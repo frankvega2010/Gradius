@@ -4,6 +4,9 @@
 - el fondo ahora es un sprite
 - agregados dos asteroides enemigos
 - solucionado el bug del puntaje infinito
+- añadida nueva pantalla de titulo
+- ahora se puede cerrar desde la cruz de la ventana en cualquier momento del juego
+- se ha modificado el sprite del asteroide objetivo
 
 ## [0.2] - 25-10-2018
 ### Added

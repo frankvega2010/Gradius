@@ -60,7 +60,7 @@ namespace Juego
 
 			for (int i = 0; i < cantAF; i++)
 			{
-				asteroidesFondo[i].sprite = LoadTexture("res/assets/asteroide fondo.png");
+				asteroidesFondo[i].sprite = LoadTexture("res/assets/asteroide_fondo.png");
 				asteroidesFondo[i].pos.x = GetRandomValue(screenWidth / 2, screenWidth);
 				asteroidesFondo[i].pos.y = GetRandomValue(0, screenHeight);
 				asteroidesFondo[i].activo = true;
@@ -278,7 +278,7 @@ namespace Juego
 			{
 				DrawTexturePro(asteroidesFondo[i].sprite, asteroidesFondo[i].sourceRec,
 					{ asteroidesFondo[i].pos.x,asteroidesFondo[i].pos.y,(float)asteroidesFondo[i].sprite.width / 7.5f,(float)asteroidesFondo[i].sprite.height / 3.25f },
-					{ (float)asteroidesFondo[i].sprite.width / 15, (float)asteroidesFondo[i].sprite.height / 7.5f }, asteroidesFondo[i].rotacionCuerpo, DARKBROWN);
+					{ (float)asteroidesFondo[i].sprite.width / 15, (float)asteroidesFondo[i].sprite.height / 7.5f }, asteroidesFondo[i].rotacionCuerpo, BROWN);
 			}
 		}
 	}

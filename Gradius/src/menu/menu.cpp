@@ -23,7 +23,7 @@ namespace Juego
 
 		void inicializarMenu()
 		{
-			titulo = LoadTexture("res/assets/menu/asteroids titulo.png");
+			titulo = LoadTexture("res/assets/menu/titulo gradius.png");
 			botonJugar = LoadTexture("res/assets/menu/boton jugar.png");
 			botonCreditos = LoadTexture("res/assets/menu/boton creditos.png");
 			botonJugarP = LoadTexture("res/assets/menu/boton jugarP.png");

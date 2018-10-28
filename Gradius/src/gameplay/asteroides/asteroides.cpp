@@ -18,7 +18,7 @@ namespace Juego
 
 		void iniciarAsteroides()
 		{
-			aSprite = LoadTexture("res/assets/asteroide.png");
+			aSprite = LoadTexture("res/assets/asteroide enemigo.png");
 #ifdef AUDIO
 			aColision = LoadSound("res/assets/sonidos/colision_asteroide.wav");
 #endif
@@ -36,7 +36,7 @@ namespace Juego
 
 				asteroidesG[i].sprite = aSprite;
 
-				asteroidesG[i].rotacionCuerpo = (float)GetRandomValue(0, 1);
+				asteroidesG[i].rotacionCuerpo = 0.0f;
 			}
 		}
 
@@ -145,8 +145,8 @@ namespace Juego
 									sourceRec,
 									{ asteroidesG[i].pos.x,
 									  asteroidesG[i].pos.y,
-									  (float)asteroidesG[i].sprite.width/5, (float)asteroidesG[i].sprite.height/5 },
-									{(float)asteroidesG[i].sprite.width/10,(float)asteroidesG[i].sprite.height/10},
+									  (float)asteroidesG[i].sprite.width/2, (float)asteroidesG[i].sprite.height/2 },
+									{(float)asteroidesG[i].sprite.width/4,(float)asteroidesG[i].sprite.height/4},
 									asteroidesG[i].rotacionCuerpo, WHITE);
 					
 				}
