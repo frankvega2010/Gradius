@@ -31,6 +31,9 @@
     <Filter Include="juego\creditos">
       <UniqueIdentifier>{59cd97b4-c3ee-47e2-9342-bc12e4b9c305}</UniqueIdentifier>
     </Filter>
+    <Filter Include="juego\botones">
+      <UniqueIdentifier>{23fa61c1-bf58-4dbb-9b90-e84ccf3ca216}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\menu\menu.cpp">
@@ -66,8 +69,8 @@
     <ClCompile Include="..\src\gameplay\fondo\fondo.cpp">
       <Filter>juego\gameplay\fondo</Filter>
     </ClCompile>
-    <ClCompile Include="botones.cpp">
-      <Filter>juego</Filter>
+    <ClCompile Include="..\src\botones\botones.cpp">
+      <Filter>juego\botones</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,8 +104,8 @@
     <ClInclude Include="..\src\gameplay\fondo\fondo.h">
       <Filter>juego\gameplay\fondo</Filter>
     </ClInclude>
-    <ClInclude Include="botones.h">
-      <Filter>juego</Filter>
+    <ClInclude Include="..\src\botones\botones.h">
+      <Filter>juego\botones</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

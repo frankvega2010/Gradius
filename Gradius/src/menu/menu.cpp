@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include "juego.h"
+#include "botones/botones.h"
 
 namespace Juego
 {
@@ -43,50 +44,34 @@ namespace Juego
 			UnloadTexture(botonCreditos);
 			UnloadTexture(botonJugar);
 			UnloadTexture(botonJugarP);
+			UnloadTexture(botonSalir);
+			UnloadTexture(botonSalirP);
 		}
 
 		void chequearMouse()
 		{
-			if (GetMouseX() <= (screenWidth - jugarB.width) / 2 + jugarB.width 
-				&& GetMouseX() >= (screenWidth-jugarB.width)/2 
-				&& GetMouseY() >= screenHeight / 6 * 4 - jugarB.height / 3 
-				&& GetMouseY() <= screenHeight / 6 * 4 - jugarB.height / 3 + jugarB.height)
+			if (ubicarBoton(jugarB, botonJugar, botonJugarP,
+				(screenWidth - jugarB.width) / 2, (screenWidth - jugarB.width) / 2 + jugarB.width,
+				screenHeight / 6 * 4 - jugarB.height / 3, screenHeight / 6 * 4 - jugarB.height / 3 + jugarB.height))
 			{
-				jugarB = botonJugarP;
-				if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
-				{
-					estado = juego;
-				}
+				estado = juego;
 			}
-			else if (GetMouseX() <= (screenWidth - jugarB.width) / 2 + jugarB.width 
-					&& GetMouseX() >= (screenWidth - jugarB.width) / 2 
-					&& GetMouseY() >= screenHeight / 6 * 5 - creditosB.height / 4
-					&& GetMouseY() <= screenHeight / 6 * 5 - creditosB.height / 4 + creditosB.height)
+
+			if (ubicarBoton(creditosB, botonCreditos, botonCreditosP,
+						    (screenWidth - creditosB.width) / 2, (screenWidth - creditosB.width) / 2 + creditosB.width,
+					        screenHeight / 6 * 5 - creditosB.height / 4,
+							screenHeight / 6 * 5 - creditosB.height / 4 + creditosB.height))
 			{
-				creditosB = botonCreditosP;
-				if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
-				{
-					estado = creditos;
-				}
+				estado = creditos;
 			}
-			else
+
+			if(ubicarBoton(salirB, botonSalir, botonSalirP,
+						   screenWidth / 30, screenWidth / 30 + botonSalir.width,
+						   screenHeight / 20, screenHeight / 20 + botonSalir.height))
 			{
-				creditosB = botonCreditos;
-				jugarB = botonJugar;
+				salir = true;
 			}
-			if (GetMouseX() >= screenWidth/30 && GetMouseX() <= screenWidth/30 + botonSalir.width 
-				&& GetMouseY() >= screenHeight/20 && GetMouseY() <= screenHeight/20 + botonSalir.height)
-			{
-				salirB = botonSalirP;
-				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
-				{
-					salir = true;
-				}
-			}
-			else 
-			{
-				salirB = botonSalir;
-			}
+
 		}
 		
 		void chequearInputMenu()
