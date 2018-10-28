@@ -1,6 +1,7 @@
 #include "pausa.h"
 
 #include "raylib.h"
+#include "botones/botones.h"
 #include "juego.h"
 
 namespace Juego
@@ -10,13 +11,13 @@ namespace Juego
 		bool pausa = false;
 
 		//botones pausa
-		Texture2D botonDespausa;
-		Texture2D botonReiniciar;
-		Texture2D botonReiniciarP;
-		Texture2D botonMenu;
-		Texture2D botonMenuP;
-		Texture2D reiniciarB;
-		Texture2D menuB;
+		static Texture2D botonDespausa;
+		static Texture2D botonReiniciar;
+		static Texture2D botonReiniciarP;
+		static Texture2D botonMenu;
+		static Texture2D botonMenuP;
+		static Texture2D reiniciarB;
+		static Texture2D menuB;
 		//---------------------
 
 		void iniciarComponentesPausa()
@@ -41,52 +42,37 @@ namespace Juego
 
 		void cambiarPausa()
 		{
-			if (GetMouseX() >= screenWidth / 37.5 && GetMouseX() <= screenWidth / 16
-				&& GetMouseY() >= screenHeight / 26 && GetMouseY() <= screenHeight / 10.5)
+			if (chequearBoton(botonDespausa, screenWidth / 37.5, screenWidth / 16, screenHeight / 26, screenHeight / 10.5))
 			{
-				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+				pausa = !pausa;
+				if (estado == juegoPausado)
 				{
-					pausa = !pausa;
-					if (estado == juegoPausado)
-					{
-						estado = juego;
-					}
-					else
-					{
-						estado = juegoPausado;
-					}
-					
+					estado = juego;
+				}
+				else
+				{
+					estado = juegoPausado;
 				}
 			}
+
 		}
 
 		void chequearInputPausa()
 		{
-			if (GetMouseX() >= (screenWidth - reiniciarB.width) / 2 &&
-				GetMouseX() <= (screenWidth - reiniciarB.width) / 2 + reiniciarB.width)
+
+			if (chequearBoton(reiniciarB, botonReiniciar, botonReiniciarP,
+				(screenWidth - reiniciarB.width) / 2, (screenWidth - reiniciarB.width) / 2 + reiniciarB.width,
+				reiniciarB.height, reiniciarB.height * 2))
 			{
-				if (GetMouseY() >= reiniciarB.height && GetMouseY() <= reiniciarB.height * 2)
-				{
-					reiniciarB = botonReiniciarP;
-					if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
-					{
-						estadoA = menu;
-						estado = juego;
-					}
-				}
-				else if (GetMouseY() >= menuB.height * 4 && GetMouseY() <= menuB.height * 5)
-				{
-					menuB = botonMenuP;
-					if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
-					{
-						estado = menu;
-					}
-				}
-				else
-				{
-					reiniciarB = botonReiniciar;
-					menuB = botonMenu;
-				}
+				estadoA = menu;
+				estado = juego;
+			}
+
+			if (chequearBoton(menuB, botonMenu, botonMenuP,
+				(screenWidth - menuB.width) / 2, (screenWidth - menuB.width) / 2 + menuB.width,
+				menuB.height * 4, menuB.height * 5))
+			{
+				estado = menu;
 			}
 		}
 

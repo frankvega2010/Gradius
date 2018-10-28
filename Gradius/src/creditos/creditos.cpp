@@ -1,6 +1,7 @@
 #include "creditos.h"
 
 #include "raylib.h"
+#include "botones/botones.h"
 #include "juego.h"
 
 namespace Juego
@@ -30,19 +31,12 @@ namespace Juego
 
 		void chequearInputCreditos()
 		{
-			if (GetMouseX() >= screenWidth/53 && GetMouseX() <= screenWidth / 53 + atrasB.width &&
-				GetMouseY() >= screenHeight/30 && GetMouseY() <= screenHeight / 30 +atrasB.height)
+			if (chequearBoton(atrasB, botonAtras, botonAtrasP, screenWidth / 53, screenWidth / 53 + atrasB.width,
+				screenHeight / 30, screenHeight / 30 + atrasB.height))
 			{
-				atrasB = botonAtrasP;
-				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
-				{
-					estado = menu;
-				}
+				estado = menu;
 			}
-			else
-			{
-				atrasB = botonAtras;
-			}
+
 		}
 
 		void dibujarCreditos()

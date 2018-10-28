@@ -12,8 +12,8 @@ namespace Juego
 {
 	namespace Gameplay
 	{	
-		Texture2D fondo;
-		Texture2D botonPausa;
+		static Texture2D fondo;
+		static Texture2D botonPausa;
 		Music musicaFondo;
 
 		float bordes[4];

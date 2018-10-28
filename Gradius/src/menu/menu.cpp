@@ -8,16 +8,16 @@ namespace Juego
 {
 	namespace Menu
 	{
-		Texture2D titulo;
-		Texture2D botonJugar;
-		Texture2D botonCreditos;
-		Texture2D botonJugarP;
-		Texture2D botonCreditosP;
-		Texture2D jugarB;
-		Texture2D creditosB;
-		Texture2D botonSalir;
-		Texture2D botonSalirP;
-		Texture2D salirB;
+		static Texture2D titulo;
+		static Texture2D botonJugar;
+		static Texture2D botonCreditos;
+		static Texture2D botonJugarP;
+		static Texture2D botonCreditosP;
+		static Texture2D jugarB;
+		static Texture2D creditosB;
+		static Texture2D botonSalir;
+		static Texture2D botonSalirP;
+		static Texture2D salirB;
 		bool salir;
 
 		static void chequearMouse();
@@ -50,14 +50,14 @@ namespace Juego
 
 		void chequearMouse()
 		{
-			if (ubicarBoton(jugarB, botonJugar, botonJugarP,
+			if (chequearBoton(jugarB, botonJugar, botonJugarP,
 				(screenWidth - jugarB.width) / 2, (screenWidth - jugarB.width) / 2 + jugarB.width,
 				screenHeight / 6 * 4 - jugarB.height / 3, screenHeight / 6 * 4 - jugarB.height / 3 + jugarB.height))
 			{
 				estado = juego;
 			}
 
-			if (ubicarBoton(creditosB, botonCreditos, botonCreditosP,
+			if (chequearBoton(creditosB, botonCreditos, botonCreditosP,
 						    (screenWidth - creditosB.width) / 2, (screenWidth - creditosB.width) / 2 + creditosB.width,
 					        screenHeight / 6 * 5 - creditosB.height / 4,
 							screenHeight / 6 * 5 - creditosB.height / 4 + creditosB.height))
@@ -65,7 +65,7 @@ namespace Juego
 				estado = creditos;
 			}
 
-			if(ubicarBoton(salirB, botonSalir, botonSalirP,
+			if(chequearBoton(salirB, botonSalir, botonSalirP,
 						   screenWidth / 30, screenWidth / 30 + botonSalir.width,
 						   screenHeight / 20, screenHeight / 20 + botonSalir.height))
 			{

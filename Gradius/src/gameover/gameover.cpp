@@ -1,6 +1,7 @@
 #include "gameover.h"
 
 #include "raylib.h"
+#include "botones/botones.h"
 #include "gameplay/gameplay.h"
 #include "juego.h"
 
@@ -51,42 +52,30 @@ namespace Juego
 
 		void chequearMouse()
 		{
-				if (GetMouseX() >= (screenWidth - jugarB.width) / 2 &&
-					GetMouseX() <= (screenWidth - jugarB.width) / 2 + jugarB.width)
-				{
-					if (GetMouseY() >= screenHeight - (jugarB.height * 2 + jugarB.height) &&
-						GetMouseY() <= (screenHeight - (jugarB.height * 2 + jugarB.height)) + jugarB.height)
-					{
-						jugarB = volverAJP;
-						if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
-						{
-							estado = juego;
-						}
-					}
-					else if (GetMouseY() >= screenHeight - (volverMB.height + volverMB.height / 2) &&
-						GetMouseY()<=(screenHeight - (volverMB.height + volverMB.height / 2))+volverMB.height)
-					{
-						volverMB = volverAMP;
-						if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
-						{
-							estado = menu;
-						}
-					}
-					else
-					{
-						jugarB = volverAJ;
-						volverMB = volverAM;
-					}
+			if (chequearBoton(jugarB, volverAJ, volverAJP,
+				(screenWidth - jugarB.width) / 2, (screenWidth - jugarB.width) / 2 + jugarB.width,
+				screenHeight - (jugarB.height * 2 + jugarB.height),
+				(screenHeight - (jugarB.height * 2 + jugarB.height)) + jugarB.height))
+			{
+				estado = juego;
+			}
+
+			if (chequearBoton(volverMB, volverAM, volverAMP,
+				(screenWidth - volverMB.width) / 2, (screenWidth - volverMB.width) / 2 + volverMB.width,
+				screenHeight - (jugarB.height * 2 + jugarB.height),
+				(screenHeight - (jugarB.height * 2 + jugarB.height)) + jugarB.height))
+			{
+				estado = menu;
+			}
 				
-				}
-				if (Gameplay::gano)
-				{
-					resultado = felicidades;
-				}
-				else
-				{
-					resultado = perdiste;
-				}
+			if (Gameplay::gano)
+			{
+				resultado = felicidades;
+			}
+			else
+			{
+				resultado = perdiste;
+			}
 		}
 
 		void chequearInputGO()

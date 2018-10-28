@@ -1,6 +1,7 @@
 #include "juego.h"
 
 #include "raylib.h"
+#include "botones/botones.h"
 #include "menu/menu.h"
 #include "gameplay/gameplay.h"
 #include "gameover/gameover.h"
@@ -17,9 +18,9 @@ namespace Juego
 	static bool enjuego = true;
 	Music musicaJuego;
 	bool haySonido = true;
-	Texture2D unmute;
-	Texture2D mute;
-	Texture2D sonido;
+	static Texture2D unmute;
+	static Texture2D mute;
+	static Texture2D sonido;
 
 	static void inicializarJuego();
 	static void finalizarJuego();
@@ -35,22 +36,18 @@ namespace Juego
 
 	void mutear()
 	{
-		if (GetMouseX() >= screenWidth - 90 && GetMouseX() <= screenWidth - 90 + sonido.width
-			&& GetMouseY() >= screenHeight - 90 && GetMouseY() <= screenHeight - 90 + sonido.height)
+		if (chequearBoton(sonido, screenWidth - 90, screenWidth - 90 + sonido.width,
+			screenHeight - 90, screenHeight - 90 + sonido.height))
 		{
-			if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
+			haySonido = !haySonido;
+			if (haySonido)
 			{
-				haySonido = !haySonido;
-				if (haySonido)
-				{
-					sonido = unmute;
-				}
-				else
-				{
-					sonido = mute;
-				}
+				sonido = unmute;
 			}
-
+			else
+			{
+				sonido = mute;
+			}
 		}
 	}
 
@@ -118,8 +115,7 @@ namespace Juego
 					{
 						PauseMusicStream(musicaJuego);
 					}
-#endif 
-					HideCursor();
+#endif
 				}
 				if(estadoA==juegoPausado)
 				{
@@ -133,6 +129,7 @@ namespace Juego
 				{
 					Gameover::desinicializarGO();
 				}
+				HideCursor();
 			}
 			Gameplay::actualizarGP();
 
