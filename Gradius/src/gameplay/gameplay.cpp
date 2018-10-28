@@ -93,14 +93,15 @@ namespace Juego
 				actualizarDisparos();
 				moverDisparos();
 				actualizarFondo();
-				if (gameOver)
-				{
-					estado = gameover;
-				}
-				if (nave.puntaje ==cantAsteroidesG*5)
+				if (nave.puntaje == cantAsteroidesG * 5)
 				{
 					gano = true;
 					gameOver = true;
+				}
+
+				if (gameOver)
+				{
+					estado = gameover;
 				}
 			
 		}

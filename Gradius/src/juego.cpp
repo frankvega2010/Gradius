@@ -83,7 +83,11 @@ namespace Juego
 			if (estado != estadoA)
 			{
 				Menu::inicializarMenu();
-				Creditos::desinicializarCreditos();
+				if (estadoA == creditos)
+				{
+					Creditos::desinicializarCreditos();
+				}
+
 				if (estadoA == juegoPausado)
 				{
 					Gameplay::desinicializarGP();
@@ -120,7 +124,7 @@ namespace Juego
 				if(estadoA==juegoPausado)
 				{
 					Gameplay::desinicializarPausa();
-					HideCursor();
+					//HideCursor();
 				}
 				if (estadoA == menu)
 				{
@@ -132,13 +136,17 @@ namespace Juego
 				}
 			}
 			Gameplay::actualizarGP();
-			break;
+
+			if (!Gameplay::gameOver)
+			{
+				break;
+			}
 		case gameover:
-			if (estado!=estadoA)
+			if (estado != estadoA)
 			{
 				Gameover::inicializarGO();
 				Gameplay::desinicializarGP();
-				estadoA = gameover; //la unica solucion que le encontré al problema
+				ShowCursor();
 #ifdef AUDIO
 				if (haySonido)
 				{
@@ -147,7 +155,6 @@ namespace Juego
 				}
 #endif 
 			}
-			ShowCursor();
 #ifdef AUDIO
 			if (haySonido)
 			{
@@ -159,6 +166,7 @@ namespace Juego
 			if (estado != estadoA)
 			{
 				Gameplay::iniciarComponentesPausa();
+				ShowCursor();
 			}
 #ifdef AUDIO
 			if (haySonido)
@@ -166,7 +174,6 @@ namespace Juego
 				UpdateMusicStream(Gameplay::musicaFondo);
 			}
 #endif
-			ShowCursor();
 			break;
 		case creditos:
 			if (estado != estadoA)
@@ -235,10 +242,8 @@ namespace Juego
 		inicializarJuego();
 		while (enjuego)
 		{
-			if (estado != gameover) //unica solucion que le encontré al problema
-			{
-				cambiarEstado();
-			}
+			cambiarEstado();
+
 			//input
 			chequearInput();
 			//actualizacion
