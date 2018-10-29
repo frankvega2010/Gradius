@@ -259,7 +259,7 @@ namespace Juego
 	void inicializarComponentesJuego()
 	{
 #ifdef AUDIO
-		musicaJuego = LoadMusicStream("res/assets/sonidos/titulo.ogg");
+		musicaJuego = LoadMusicStream("res/assets/sonidos/menu.ogg");
 		PlayMusicStream(musicaJuego);
 #endif
 		unmute = LoadTexture("res/assets/sonidos/sonido.png");

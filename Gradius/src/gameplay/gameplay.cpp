@@ -44,7 +44,7 @@ namespace Juego
 			botonPausa = LoadTexture("res/assets/pausa/boton pausa.png");
 			controles = LoadTexture("res/assets/controles gradius.png");
 #ifdef AUDIO
-			musicaFondo = LoadMusicStream("res/assets/sonidos/musica espacio.ogg");
+			musicaFondo = LoadMusicStream("res/assets/sonidos/stage.ogg");
 			if (haySonido)
 			{
 				PlayMusicStream(musicaFondo);
