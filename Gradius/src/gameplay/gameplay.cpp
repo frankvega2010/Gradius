@@ -72,17 +72,20 @@ namespace Juego
 
 		void chequearInputGP()
 		{
-			moverNave();
-			
-			cambiarPausa();
+			if (timer > 3)
+			{
+				moverNave();
 
-			if (pausa)
-			{
-				chequearInputPausa();
-			}
-			else
-			{
-				activarDisparos();
+				cambiarPausa();
+
+				if (pausa)
+				{
+					chequearInputPausa();
+				}
+				else
+				{
+					activarDisparos();
+				}
 			}
 		}
 
