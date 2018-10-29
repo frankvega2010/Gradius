@@ -1,5 +1,6 @@
 #include "gameplay.h"
 
+#include <iostream>
 #include "raylib.h"
 #include "juego.h"
 #include "nave/nave.h"
@@ -8,13 +9,18 @@
 #include "pausa/pausa.h"
 #include "fondo/fondo.h"
 
+using namespace std;
+
 namespace Juego
 {
 	namespace Gameplay
 	{	
 		static Texture2D fondo;
 		static Texture2D botonPausa;
+		static Texture2D controles;
 		Music musicaFondo;
+
+		static float timer = 0.0f;
 
 		float bordes[4];
 
@@ -39,6 +45,7 @@ namespace Juego
 			inicializarDisparos();
 			inicializarFondo();
 			botonPausa = LoadTexture("res/assets/pausa/boton pausa.png");
+			controles = LoadTexture("res/assets/controles gradius.png");
 #ifdef AUDIO
 			musicaFondo = LoadMusicStream("res/assets/sonidos/musica espacio.ogg");
 			if (haySonido)
@@ -59,8 +66,10 @@ namespace Juego
 #endif
 			UnloadTexture(nave.sprite);
 			UnloadTexture(botonPausa);
+			UnloadTexture(controles);
 			desinicializarAsteroides();
 			desinicializarFondo();
+			timer = 0;
 		}
 
 		void chequearInputGP()
@@ -79,14 +88,22 @@ namespace Juego
 			}
 		}
 
+		static void actualizarTiempo()
+		{
+			timer += GetFrameTime();
+		}
+
 		void actualizarGP()
 		{
+			actualizarTiempo();
 #ifdef AUDIO
 				if (haySonido)
 				{
 					UpdateMusicStream(musicaFondo);
 				}
 #endif
+			if (timer > 3)
+			{
 				chequearColisionConAsteroide();
 				chequearColisionConBordes();
 				moverAsteroides();
@@ -103,7 +120,7 @@ namespace Juego
 				{
 					estado = gameover;
 				}
-			
+			}
 		}
 
 		void dibujarBotonPausa()
@@ -113,14 +130,21 @@ namespace Juego
 
 		void dibujarGameplay()
 		{
-			dibujarFondo();
-			dibujarDisparos();
-			dibujarNave();
-			dibujarAsteroides();
-			
-			DrawText(FormatText("%i", nave.puntaje),
-								screenWidth - screenWidth / 10, screenHeight / 30,
-								screenWidth*screenHeight / 10800, MAGENTA);
+			if (timer <= 3)
+			{
+				DrawTexture(controles, 0, 0, WHITE);
+			}
+			else
+			{
+				dibujarFondo();
+				dibujarDisparos();
+				dibujarNave();
+				dibujarAsteroides();
+
+				DrawText(FormatText("%i", nave.puntaje),
+					screenWidth - screenWidth / 10, screenHeight / 30,
+					screenWidth*screenHeight / 10800, MAGENTA);
+			}
 			if (!pausa)
 			{
 				dibujarBotonPausa();

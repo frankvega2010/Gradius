@@ -1,6 +1,7 @@
 #include "pausa.h"
 
 #include "raylib.h"
+#include "gameplay/gameplay.h"
 #include "botones/botones.h"
 #include "juego.h"
 
@@ -38,6 +39,8 @@ namespace Juego
 			UnloadTexture(botonReiniciarP);
 			UnloadTexture(botonMenu);
 			UnloadTexture(botonMenuP);
+			UnloadTexture(menuB);
+			UnloadTexture(reiniciarB);
 		}
 
 		void cambiarPausa()
@@ -59,12 +62,12 @@ namespace Juego
 
 		void chequearInputPausa()
 		{
-
 			if (chequearBoton(reiniciarB, botonReiniciar, botonReiniciarP,
 				(screenWidth - reiniciarB.width) / 2, (screenWidth - reiniciarB.width) / 2 + reiniciarB.width,
 				reiniciarB.height, reiniciarB.height * 2))
 			{
-				estadoA = menu;
+				desinicializarGP();
+				iniciarComponentesGP();
 				estado = juego;
 			}
 
