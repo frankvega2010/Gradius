@@ -1,6 +1,5 @@
 #include "gameplay.h"
 
-#include <iostream>
 #include "raylib.h"
 #include "juego.h"
 #include "nave/nave.h"
@@ -8,8 +7,6 @@
 #include "disparos/disparos.h"
 #include "pausa/pausa.h"
 #include "fondo/fondo.h"
-
-using namespace std;
 
 namespace Juego
 {
@@ -69,6 +66,7 @@ namespace Juego
 			UnloadTexture(controles);
 			desinicializarAsteroides();
 			desinicializarFondo();
+			desinicializarDisparos();
 			timer = 0;
 		}
 
@@ -110,7 +108,7 @@ namespace Juego
 				actualizarDisparos();
 				moverDisparos();
 				actualizarFondo();
-				if (nave.puntaje == cantAsteroidesG * 5)
+				if (asteroidesDestruidos==cantAsteroidesG)
 				{
 					gano = true;
 					gameOver = true;
@@ -140,10 +138,6 @@ namespace Juego
 				dibujarDisparos();
 				dibujarNave();
 				dibujarAsteroides();
-
-				DrawText(FormatText("%i", nave.puntaje),
-					screenWidth - screenWidth / 10, screenHeight / 30,
-					screenWidth*screenHeight / 10800, MAGENTA);
 			}
 			if (!pausa)
 			{

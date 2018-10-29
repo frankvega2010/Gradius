@@ -20,6 +20,7 @@ namespace Juego
 		};
 
 		extern const int cantAsteroidesG;
+		extern int asteroidesDestruidos;
 
 		void iniciarAsteroides();
 		void desinicializarAsteroides();

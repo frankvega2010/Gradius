@@ -48,7 +48,6 @@ namespace Juego
 				nave.aceleracion = { 0.0f,0.0f };
 				nave.anguloAceler = 0.0f;
 				nave.detenida = true;
-				nave.puntaje = 0;
 				establecerSR();
 			}
 

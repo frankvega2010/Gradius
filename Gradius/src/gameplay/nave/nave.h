@@ -22,7 +22,6 @@ namespace Juego
 			float aceleracionBase;
 			Vector2 aceleracion;
 			bool detenida;
-			int puntaje;
 		};
 
 		extern Nave nave;

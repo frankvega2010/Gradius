@@ -15,7 +15,7 @@ namespace Juego
 
 		void inicializarCreditos()
 		{
-			creditosT = LoadTexture("res/assets/creditos/asteroids creditos.png");
+			creditosT = LoadTexture("res/assets/creditos/creditos.png");
 			botonAtras = LoadTexture("res/assets/creditos/atras.png");
 			botonAtrasP = LoadTexture("res/assets/creditos/atrasP.png");
 			atrasB = botonAtras;

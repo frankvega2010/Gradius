@@ -12,6 +12,7 @@ namespace Juego
 	namespace Gameplay
 	{
 		const int cantAsteroidesG = 3;
+		int asteroidesDestruidos = 0;
 		static Asteroide asteroidesG[cantAsteroidesG];
 		static Texture2D aSprite;
 		static Sound aColision;
@@ -38,6 +39,7 @@ namespace Juego
 
 				asteroidesG[i].rotacionCuerpo = 0.0f;
 			}
+			asteroidesDestruidos = 0;
 		}
 
 		void desinicializarAsteroides()
@@ -115,7 +117,7 @@ namespace Juego
 							disparos[j].activo = false;
 							colisiono = true;
 
-							nave.puntaje += 5;
+							asteroidesDestruidos++;
 						}
 					}
 				}

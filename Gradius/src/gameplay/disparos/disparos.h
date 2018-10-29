@@ -12,14 +12,16 @@ namespace Juego
 			Vector2 pos;
 			float radio;
 			bool activo;
-			float angulo;
 			float velocidad;
+			Texture2D sprite;
+			float rotacionSprite;
 		};
 
 		const int cantDisparos = 6;
 		extern Disparo disparos[cantDisparos];
 
 		void inicializarDisparos();
+		void desinicializarDisparos();
 		void activarDisparos();
 		void moverDisparos();
 		void actualizarDisparos();
