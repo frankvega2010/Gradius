@@ -3,6 +3,7 @@
 ##[proximamente] - 28-10-2018
 - ahora el gameplay posee una pantalla de controles que explica como jugar
 - solucionados los errores de carga de texturas entre pantalla y pantalla
+- ahora el disparo es un sprite
 
 ## [0.3] - 28-10-2018
 - el fondo ahora es un sprite
