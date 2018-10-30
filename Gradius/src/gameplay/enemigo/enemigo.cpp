@@ -17,7 +17,7 @@ namespace Juego
 
 		void iniciarEnemigos()
 		{
-			aSprite = LoadTexture("res/assets/sprites/gameplay/asteroide enemigo.png");
+			aSprite = LoadTexture("res/assets/sprites/gameplay/cannon01.png");
 
 			enemigoAntiAereo.size = {50,50};
 			enemigoAntiAereo.pos.x = GetRandomValue((0 - enemigoAntiAereo.size.x), ((-((float)screenWidth*1.8f)) - enemigoAntiAereo.size.x));
@@ -114,7 +114,25 @@ namespace Juego
 
 		void dibujarEnemigos()
 		{
-			DrawRectangleRec({ enemigoAntiAereo.pos.x,enemigoAntiAereo.pos.y,enemigoAntiAereo.size.x,enemigoAntiAereo.size.y }, WHITE);
+			Rectangle sourceRec;
+			sourceRec.height = (float)aSprite.height;
+			sourceRec.width = (float)aSprite.width;
+			sourceRec.x = 0.0f;
+			sourceRec.y = 0.0f;
+
+			//DrawRectangleRec({ enemigoAntiAereo.pos.x,enemigoAntiAereo.pos.y,enemigoAntiAereo.size.x,enemigoAntiAereo.size.y }, { 0,0,0,0 });
+			if (enemigoAntiAereo.activo)
+			{
+				DrawTexturePro(enemigoAntiAereo.sprite,
+					sourceRec,
+					{ enemigoAntiAereo.pos.x,
+					enemigoAntiAereo.pos.y,
+					90, 90 },
+					{ 20,40 },
+					0, WHITE);
+
+			}
+				
 		}
 	}
 }
