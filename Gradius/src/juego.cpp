@@ -36,8 +36,8 @@ namespace Juego
 
 	static void mutear()
 	{
-		if (chequearBoton(sonido, screenWidth - screenWidth/10, screenWidth - screenWidth / 10 + sonido.width,
-			screenHeight - screenHeight/20, screenHeight - screenHeight / 20 + sonido.height))
+		if (chequearBoton(sonido, screenWidth - screenWidth/8, screenWidth - screenWidth / 8 + sonido.width,
+			screenHeight - screenHeight/6, screenHeight - screenHeight / 6 + sonido.height))
 		{
 			haySonido = !haySonido;
 			if (haySonido)

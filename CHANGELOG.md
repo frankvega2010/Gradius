@@ -1,6 +1,6 @@
 # Changelog
 
-##[proximamente] - 28-10-2018
+## [1.0] - 28-10-2018
 - ahora el gameplay posee una pantalla de controles que explica como jugar
 - solucionados los errores de carga de texturas entre pantalla y pantalla
 - ahora el disparo es un sprite
