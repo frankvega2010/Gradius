@@ -31,7 +31,7 @@ namespace Juego
 
 				asteroidesG[i].activo = true;
 
-				asteroidesG[i].vel = -200.0f;
+				asteroidesG[i].vel = -50.0f;//200
 
 				asteroidesG[i].sprite = aSprite;
 
@@ -125,6 +125,8 @@ namespace Juego
 						{
 							asteroidesG[i].activo = false;
 							mortero[k].activo = false;
+							mortero[k].velocidad = nave.velocidad * 1.5f;
+							mortero[k].velocidadY = nave.velocidad * 1.2f;
 							colisiono = true;
 
 							asteroidesDestruidos++;

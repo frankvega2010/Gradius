@@ -3,6 +3,7 @@
 #include "raylib.h"
 #include "juego.h"
 #include "gameplay/nave/nave.h"
+#include "gameplay/enemigo/enemigo.h"
 
 namespace Juego
 {
@@ -10,14 +11,20 @@ namespace Juego
 	{
 		static int balaADisp = 0;
 		static int misilADisp = 0;
+		static bool updateLocation = true;
+		//static bool misilEstaAbajo = false;
 		//static int speedDe
+		//enemigoAntiAereo.puedeDisparar = false;
 		static Texture2D dSprite;
 
 		Disparo disparos[cantDisparos];
 		Disparo mortero[cantMisiles];
 
+		Disparo misilesEnemigos[1];
+
 		void inicializarDisparos()
 		{
+			updateLocation = true;
 			dSprite = LoadTexture("res/assets/sprites/gameplay/disparo.png");
 
 			for (int i = 0; i < cantDisparos; i++)
@@ -39,6 +46,14 @@ namespace Juego
 				mortero[i].sprite = dSprite;
 				mortero[i].rotacionSprite = 0.0f;
 			}
+
+			misilesEnemigos[0].pos = { enemigoAntiAereo.pos.x,enemigoAntiAereo.pos.y};
+			misilesEnemigos[0].radio = (float)screenHeight*screenWidth / 165000;
+			misilesEnemigos[0].activo = false;
+			misilesEnemigos[0].velocidad = nave.velocidad * 2 / 2;
+			misilesEnemigos[0].velocidadY = nave.velocidad * 2 / 2;
+			misilesEnemigos[0].sprite = dSprite;
+			misilesEnemigos[0].rotacionSprite = 0.0f;
 		}
 
 		void desinicializarDisparos()
@@ -62,10 +77,28 @@ namespace Juego
 				mortero[misilADisp].activo = true;
 				misilADisp++;
 			}
+
+			if (enemigoAntiAereo.pos.x <= screenWidth / 1.5f) misilesEnemigos[0].activo = true;
 		}
 
 		void moverDisparos()
 		{
+			if (misilesEnemigos[0].activo)
+			{
+				if (updateLocation)
+				{
+					misilesEnemigos[0].pos = { enemigoAntiAereo.pos.x,enemigoAntiAereo.pos.y };
+					updateLocation = false;
+				}
+				misilesEnemigos[0].pos.x -= misilesEnemigos[0].velocidad*GetFrameTime();
+				misilesEnemigos[0].pos.y -= misilesEnemigos[0].velocidadY*GetFrameTime();
+				if ((misilesEnemigos[0].pos.y < 0 - misilesEnemigos[0].radio|| misilesEnemigos[0].pos.x < 0 - misilesEnemigos[0].radio ) && enemigoAntiAereo.pos.x >= screenWidth / 1.5f)
+				{
+					misilesEnemigos[0].activo = false;
+					updateLocation = true;
+				}
+			}
+
 			for (int i = 0; i < cantDisparos; i++)
 			{
 				if (disparos[i].activo)
@@ -73,8 +106,7 @@ namespace Juego
 					disparos[i].pos.x += disparos[i].velocidad*GetFrameTime();
 					if (disparos[i].pos.x > screenWidth)
 					{
-						disparos[i].activo = false;
-						
+						disparos[i].activo = false;	
 					}
 				}
 			}
@@ -83,19 +115,25 @@ namespace Juego
 			{
 				if (mortero[i].activo)
 				{
-					//if (mortero[i].pos.x >= mortero[i].pos.x + 5) mortero[i].pos.x += 0;
 					if (mortero[i].velocidad <= 0) mortero[i].velocidad = 0;
-					else mortero[i].velocidad--;
-					//else if (mortero[i].pos.x >= nave.pos.x + 100) mortero[i].pos.x += 0;
-					mortero[i].pos.x += mortero[i].velocidad*GetFrameTime();
+					else if (mortero[i].velocidad >= 1 && mortero[i].pos.x >= nave.pos.x + 100) mortero[i].velocidad = mortero[i].velocidad - 0.5f;
 
-					//if (mortero[i].pos.x <= nave.pos.x - 50) mortero[i].pos.x += 0;
+					if (mortero[i].pos.x >= nave.pos.x + 50) mortero[i].velocidadY = nave.velocidad * 2 / 2;
+
+					if (mortero[i].pos.y >= screenHeight - disparos[0].radio)
+					{
+						mortero[i].velocidad = nave.velocidad * 1.5f;
+						mortero[i].velocidadY = 0;
+					}
 
 					mortero[i].pos.y += mortero[i].velocidadY*GetFrameTime();
-					if (mortero[i].pos.y > screenHeight)
+					mortero[i].pos.x += mortero[i].velocidad*GetFrameTime();
+					
+					if (mortero[i].pos.y > screenHeight || mortero[i].pos.x > screenWidth)
 					{
 						mortero[i].activo = false;
 						mortero[i].velocidad = nave.velocidad * 1.5f;
+						mortero[i].velocidadY = nave.velocidad * 1.2f;
 					}
 				}
 			}
@@ -158,6 +196,15 @@ namespace Juego
 						{ (float)mortero[i].sprite.width / 2,(float)mortero[i].sprite.height / 2 }, mortero[i].rotacionSprite,
 						WHITE);
 				}
+			}
+
+			if (misilesEnemigos[0].activo)
+			{
+				DrawTexturePro(misilesEnemigos[0].sprite,
+					{ 0.0f,0.0f, (float)misilesEnemigos[0].sprite.width, (float)misilesEnemigos[0].sprite.height },
+					{ misilesEnemigos[0].pos.x,misilesEnemigos[0].pos.y,(float)misilesEnemigos[0].sprite.width,(float)misilesEnemigos[0].sprite.height },
+					{ (float)misilesEnemigos[0].sprite.width / 2,(float)misilesEnemigos[0].sprite.height / 2 }, mortero[0].rotacionSprite,
+					GOLD);
 			}
 		}
 	}

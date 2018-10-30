@@ -14,6 +14,7 @@ namespace Juego
 			float vel;
 			//float angulo;
 			bool activo;
+			//bool puedeDisparar;
 			Texture2D sprite;
 			//float rotacionCuerpo;
 			//Rectangle sourceRec; // solo para los del fondo
