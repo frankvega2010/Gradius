@@ -140,7 +140,7 @@ namespace Juego
 				dibujarNave();
 				dibujarAsteroides();
 				dibujarEnemigos();
-				DrawText(FormatText("Targets Left: %i", cantEnemiesTarget), 20, 20, 50, WHITE);
+				DrawText(FormatText("Targets Left: %i", cantEnemiesTarget), 80, 20, 50, WHITE);
 			}
 			if (!pausa)
 			{
