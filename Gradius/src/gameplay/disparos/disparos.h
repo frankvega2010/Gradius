@@ -18,10 +18,12 @@ namespace Juego
 			float rotacionSprite;
 		};
 
+		const int cantMisilesEnemigos = 1;
 		const int cantDisparos = 6;
 		const int cantMisiles = 5;
 		extern Disparo disparos[cantDisparos];
 		extern Disparo mortero[cantMisiles];
+		extern Disparo misilesEnemigos[cantMisilesEnemigos];
 
 		void inicializarDisparos();
 		void desinicializarDisparos();

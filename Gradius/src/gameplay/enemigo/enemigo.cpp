@@ -5,6 +5,7 @@
 #include "gameplay/nave/nave.h"
 #include "gameplay/gameplay.h"
 #include "gameplay/disparos/disparos.h"
+#include "gameplay/asteroides/asteroides.h"
 
 namespace Juego
 {
@@ -55,6 +56,16 @@ namespace Juego
 					gameOver = true;
 				}
 
+				if (misilesEnemigos[0].activo)
+				{
+					if (CheckCollisionCircles({ nave.pos.x + sin(nave.rotacion*DEG2RAD),
+						nave.pos.y - cos(nave.rotacion*DEG2RAD) },
+						nave.radioColision, misilesEnemigos[0].pos, misilesEnemigos[0].radio))
+					{
+						gameOver = true;
+					}
+				}
+
 
 				for (int j = 0; j < cantDisparos; j++)
 				{
@@ -64,7 +75,7 @@ namespace Juego
 						disparos[j].activo = false;
 						colisiono = true;
 
-						//asteroidesDestruidos++;
+						cantEnemiesTarget--;
 					}
 				}
 
@@ -78,7 +89,7 @@ namespace Juego
 						mortero[k].velocidadY = nave.velocidad * 1.2f;
 						colisiono = true;
 
-						//asteroidesDestruidos++;
+						cantEnemiesTarget--;
 					}
 				}
 			}

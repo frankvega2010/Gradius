@@ -12,6 +12,7 @@ namespace Juego
 	namespace Gameplay
 	{
 		const int cantAsteroidesG = 3;
+		int cantEnemiesTarget = 30;
 		int asteroidesDestruidos = 0;
 		static Asteroide asteroidesG[cantAsteroidesG];
 		static Texture2D aSprite;
@@ -27,11 +28,15 @@ namespace Juego
 			{
 				asteroidesG[i].radio = 60;
 
-				asteroidesG[i].pos = { (float)screenWidth / asteroidesG[0].radio * 40,asteroidesG[i].radio*(i+1)*3};
+				//asteroidesG[i].pos = { (float)screenWidth / asteroidesG[0].radio * 40,asteroidesG[i].radio*(i+1)*3};
+
+				asteroidesG[i].pos.x = GetRandomValue((float)screenWidth,((float)screenWidth*1.8f));
+				asteroidesG[i].pos.y = GetRandomValue((0 + asteroidesG[i].radio), ((float)screenHeight - asteroidesG[i].radio));// { (float)screenWidth / asteroidesG[0].radio * 40,asteroidesG[i].radio*(i + 1) * 3 };
 
 				asteroidesG[i].activo = true;
 
-				asteroidesG[i].vel = -50.0f;//200
+				asteroidesG[i].vel = -200.0f;//200
+				asteroidesG[i].vel = GetRandomValue(-200.0f,-400.0f);
 
 				asteroidesG[i].sprite = aSprite;
 
@@ -69,6 +74,9 @@ namespace Juego
 					if (asteroidesG[i].pos.x < -asteroidesG[i].radio)
 					{
 						asteroidesG[i].pos.x = screenWidth + asteroidesG[i].radio;
+						asteroidesG[i].pos.x = GetRandomValue((float)screenWidth + asteroidesG[i].radio, ((float)screenWidth*2.0));
+						asteroidesG[i].pos.y = GetRandomValue((0 + asteroidesG[i].radio), ((float)screenHeight - asteroidesG[i].radio));
+						asteroidesG[i].vel = GetRandomValue(-200.0f, -400.0f);
 					}
 					if (asteroidesG[i].pos.y < -asteroidesG[i].radio)
 					{
@@ -87,6 +95,12 @@ namespace Juego
 					{
 						asteroidesG[i].rotacionCuerpo-= velocidadRotacion * GetFrameTime();
 					}
+
+					//if (asteroidesG[i].pos.x < 0 - asteroidesG[i].radio)
+					//{
+					//	asteroidesG[i].pos.x = GetRandomValue((float)screenWidth, ((float)screenWidth*1.5));
+					//	asteroidesG[i].pos.y = GetRandomValue((0 + asteroidesG[i].radio), ((float)screenHeight - asteroidesG[i].radio));
+					//}
 				}
 			}
 		}
@@ -115,7 +129,7 @@ namespace Juego
 							disparos[j].activo = false;
 							colisiono = true;
 
-							asteroidesDestruidos++;
+							cantEnemiesTarget--;
 						}
 					}
 
@@ -129,9 +143,18 @@ namespace Juego
 							mortero[k].velocidadY = nave.velocidad * 1.2f;
 							colisiono = true;
 
-							asteroidesDestruidos++;
+							cantEnemiesTarget--;
 						}
 					}
+				}
+
+				if (!asteroidesG[i].activo)
+				{
+					//asteroidesG[i].pos = { (float)screenWidth / asteroidesG[0].radio * 40,asteroidesG[i].radio*(i + 1) * 3 };
+					asteroidesG[i].pos.x = GetRandomValue((float)screenWidth + asteroidesG[i].radio, ((float)screenWidth*2.0));
+					asteroidesG[i].pos.y = GetRandomValue((0 + asteroidesG[i].radio), ((float)screenHeight - asteroidesG[i].radio));
+					asteroidesG[i].vel = GetRandomValue(-200.0f, -400.0f);
+					asteroidesG[i].activo = true;
 				}
 
 			}

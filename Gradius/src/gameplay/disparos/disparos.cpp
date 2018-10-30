@@ -9,6 +9,7 @@ namespace Juego
 {
 	namespace Gameplay
 	{
+		
 		static int balaADisp = 0;
 		static int misilADisp = 0;
 		static bool updateLocation = true;
@@ -20,7 +21,7 @@ namespace Juego
 		Disparo disparos[cantDisparos];
 		Disparo mortero[cantMisiles];
 
-		Disparo misilesEnemigos[1];
+		Disparo misilesEnemigos[cantMisilesEnemigos];
 
 		void inicializarDisparos()
 		{

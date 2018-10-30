@@ -42,6 +42,7 @@ namespace Juego
 				PlayMusicStream(musicaFondo);
 			}
 #endif
+			cantEnemiesTarget = 30;
 			gameOver = false;
 			pausa = false;
 			gano = false;
@@ -107,10 +108,11 @@ namespace Juego
 				actualizarDisparos();
 				moverDisparos();
 				actualizarFondo();
-				if (asteroidesDestruidos==cantAsteroidesG)
+				if (cantEnemiesTarget <= 0)
 				{
 					gano = true;
 					gameOver = true;
+					cantEnemiesTarget = 30;
 				}
 
 				if (gameOver)
@@ -138,6 +140,7 @@ namespace Juego
 				dibujarNave();
 				dibujarAsteroides();
 				dibujarEnemigos();
+				DrawText(FormatText("Targets Left: %i", cantEnemiesTarget), 20, 20, 50, WHITE);
 			}
 			if (!pausa)
 			{
