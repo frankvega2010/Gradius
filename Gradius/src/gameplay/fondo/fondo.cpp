@@ -10,20 +10,20 @@ namespace Juego
 {
 	namespace Gameplay
 	{
-		float limitesAsteroidesFondo[4];
-		const int cantAF = 5;
-		const int cantPiezasFondo = 3;
-		Asteroide asteroidesFondo[cantAF];
+		static float limitesAsteroidesFondo[4];
+		static const int cantAF = 5;
+		static const int cantPiezasFondo = 3;
+		static Asteroide asteroidesFondo[cantAF];
 		static int framesCounter = 0;
 
-		struct Fondo
+		static struct Fondo
 		{
 			Texture2D sprite;
 			Vector2 pos;
 			float vel;
 		};
 
-		struct Planeta
+		static struct Planeta
 		{
 			bool activo;
 			Rectangle sourceRec;
@@ -34,10 +34,12 @@ namespace Juego
 			Color brillo;
 		};
 
-		Fondo fondo[cantPiezasFondo];
-		Planeta planeta;
+		static Fondo fondo[cantPiezasFondo];
+		static Planeta planeta;
+		static void inicializarLimites();
+		static void chequearLimite();
 
-		void inicializarLimites()
+		static void inicializarLimites()
 		{
 			limitesAsteroidesFondo[arriba] = -asteroidesFondo[0].radio;
 			limitesAsteroidesFondo[abajo] = screenHeight + asteroidesFondo[0].radio;
@@ -101,7 +103,7 @@ namespace Juego
 			}
 		}
 
-		void chequearLimite()
+		static void chequearLimite()
 		{
 			bool tocoLimite = false;
 			for (int i = 0; i < cantAF; i++)
@@ -223,7 +225,7 @@ namespace Juego
 				planeta.activo = false;
 			}
 
-			if (framesCounter > 1000)
+			if (framesCounter > 1000) //cada mil frames el asteroide del fondo cambia su sprite
 			{
 				framesCounter = 0;
 			}

@@ -12,33 +12,22 @@ namespace Juego
 {
 	namespace Gameplay
 	{	
-		static Texture2D fondo;
 		static Texture2D botonPausa;
 		static Texture2D controles;
 		Music musicaFondo;
 
 		static float timer = 0.0f;
 
-		float bordes[4];
-
 		bool gano;
 
 		bool gameOver;
 
-		static void iniciarBordes();
 		static void dibujarBotonPausa();
 		static void actualizarTiempo();
-
-		void iniciarBordes()
-		{
-			bordes[arriba] = nave.base;
-			bordes[abajo] = screenHeight -nave.base;
-		}
 
 		void iniciarComponentesGP()
 		{
 			iniciarNave();
-			iniciarBordes();
 			iniciarAsteroides();
 			inicializarDisparos();
 			inicializarFondo();
@@ -126,7 +115,7 @@ namespace Juego
 			}
 		}
 
-		void dibujarBotonPausa()
+		static void dibujarBotonPausa()
 		{
 			DrawTexture(botonPausa, screenWidth/45, screenHeight/30, WHITE);
 		}
@@ -147,7 +136,7 @@ namespace Juego
 			if (!pausa)
 			{
 				dibujarBotonPausa();
-				DrawCircleV(GetMousePosition(), 3, RED);
+				DrawCircleV(GetMousePosition(), 3, RED); //sin esto el jugador no puede poner pausa
 			}
 			
 			if (pausa)

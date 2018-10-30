@@ -34,10 +34,10 @@ namespace Juego
 	static void inicializarComponentesJuego();
 	static void desinicializarComponentesjuego();
 
-	void mutear()
+	static void mutear()
 	{
-		if (chequearBoton(sonido, screenWidth - 90, screenWidth - 90 + sonido.width,
-			screenHeight - 90, screenHeight - 90 + sonido.height))
+		if (chequearBoton(sonido, screenWidth - screenWidth/10, screenWidth - screenWidth / 10 + sonido.width,
+			screenHeight - screenHeight/20, screenHeight - screenHeight / 20 + sonido.height))
 		{
 			haySonido = !haySonido;
 			if (haySonido)
@@ -51,7 +51,7 @@ namespace Juego
 		}
 	}
 
-	void chequearInput()
+	static void chequearInput()
 	{
 		switch (estado)
 		{
@@ -72,7 +72,7 @@ namespace Juego
 		mutear();
 	}
 
-	void actualizarJuego()
+	static void actualizarJuego()
 	{
 		switch (estado)
 		{
@@ -187,7 +187,7 @@ namespace Juego
 		}
 	}
 
-	void cambiarEstado()
+	static void cambiarEstado()
 	{
 		if (estado != estadoA)
 		{
@@ -195,17 +195,17 @@ namespace Juego
 		}
 	}
 
-	void dibujarVersion()
+	static void dibujarVersion()
 	{
-		DrawText("v1.0", screenWidth - screenWidth/10, screenHeight/20, screenHeight*screenWidth/27000, WHITE);
+		DrawText("v1.0", screenWidth - screenWidth/10, screenHeight/15, screenHeight*screenWidth/27000, WHITE);
 	}
 
-	void dibujarSonido()
+	static void dibujarSonido()
 	{
 		DrawTexture(sonido,screenWidth - screenWidth/8, screenHeight - screenHeight/6, WHITE);
 	}
 
-	void dibujarJuego()
+	static void dibujarJuego()
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
@@ -256,7 +256,7 @@ namespace Juego
 		finalizarJuego();
 	}
 
-	void inicializarComponentesJuego()
+	static void inicializarComponentesJuego()
 	{
 #ifdef AUDIO
 		musicaJuego = LoadMusicStream("res/assets/sonidos/menu.ogg");
@@ -267,7 +267,7 @@ namespace Juego
 		sonido = unmute;
 	}
 
-	void inicializarJuego()
+	static void inicializarJuego()
 	{
 		//init game
 		InitWindow(screenWidth, screenHeight, "Asteroids");
@@ -279,7 +279,7 @@ namespace Juego
 		Menu::inicializarMenu();
 	}
 
-	void desinicializarComponentesjuego()
+	static void desinicializarComponentesjuego()
 	{
 #ifdef AUDIO
 		UnloadMusicStream(musicaJuego);
@@ -289,7 +289,7 @@ namespace Juego
 		UnloadTexture(sonido);
 	}
 
-	void finalizarJuego()
+	static void finalizarJuego()
 	{
 		//close game
 		Menu::desinicializarMenu();

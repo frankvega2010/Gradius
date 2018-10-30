@@ -15,8 +15,6 @@ namespace Juego
 			abajo
 		};
 
-		extern float bordes[4];
-
 		extern bool gano;
 		extern bool gameOver;
 		extern Music musicaFondo;

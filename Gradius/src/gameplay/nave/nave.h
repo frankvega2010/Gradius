@@ -14,13 +14,9 @@ namespace Juego
 			int radioColision;
 			float altura;
 			float base;
-			Color color;
 			Vector2 pos;
 			Texture2D sprite;
 			float velocidad;
-			float anguloAceler;
-			float aceleracionBase;
-			Vector2 aceleracion;
 			bool detenida;
 		};
 

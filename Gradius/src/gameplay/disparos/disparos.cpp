@@ -1,6 +1,5 @@
 #include "disparos.h"
 
-#include <cmath>
 #include "raylib.h"
 #include "juego.h"
 #include "gameplay/nave/nave.h"

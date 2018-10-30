@@ -29,11 +29,9 @@ namespace Juego
 
 				asteroidesG[i].pos = { (float)screenWidth / asteroidesG[0].radio * 40,asteroidesG[i].radio*(i+1)*3};
 
-				asteroidesG[i].angulo = -90.0f;
-
 				asteroidesG[i].activo = true;
 
-				asteroidesG[i].vel = 200.0f;
+				asteroidesG[i].vel = -200.0f;
 
 				asteroidesG[i].sprite = aSprite;
 
@@ -57,12 +55,12 @@ namespace Juego
 
 		void moverAsteroides()
 		{
+			float velocidadRotacion = 400.0f;
 			for (int i = 0; i <cantAsteroidesG; i++)
 			{
 				if (asteroidesG[i].activo)
 				{
-					asteroidesG[i].pos.x += sinf(asteroidesG[i].angulo*DEG2RAD) * asteroidesG[i].vel * GetFrameTime();
-					asteroidesG[i].pos.y -= cosf(asteroidesG[i].angulo*DEG2RAD) * asteroidesG[i].vel* GetFrameTime();
+					asteroidesG[i].pos.x += asteroidesG[i].vel * GetFrameTime();
 
 					if (asteroidesG[i].pos.x > screenWidth + asteroidesG[i].radio)
 					{
@@ -83,11 +81,11 @@ namespace Juego
 
 					if (asteroidesG[i].rotacionCuerpo > 0)
 					{
-						asteroidesG[i].rotacionCuerpo += 400 * GetFrameTime();
+						asteroidesG[i].rotacionCuerpo += velocidadRotacion * GetFrameTime();
 					}
 					else
 					{
-						asteroidesG[i].rotacionCuerpo-= 400 * GetFrameTime();
+						asteroidesG[i].rotacionCuerpo-= velocidadRotacion * GetFrameTime();
 					}
 				}
 			}

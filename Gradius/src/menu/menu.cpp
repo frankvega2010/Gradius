@@ -46,6 +46,10 @@ namespace Juego
 			UnloadTexture(botonJugarP);
 			UnloadTexture(botonSalir);
 			UnloadTexture(botonSalirP);
+			UnloadTexture(jugarB);
+			UnloadTexture(creditosB);
+			UnloadTexture(salirB);
+
 		}
 
 		void chequearMouse()

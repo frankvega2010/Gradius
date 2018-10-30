@@ -10,7 +10,7 @@ namespace Juego
 {
 	namespace Gameplay
 	{		
-			enum movNave
+			static enum movNave
 			{
 				siArriba,
 				siAbajo,
@@ -19,11 +19,18 @@ namespace Juego
 			Nave nave;
 
 			static int framesCounter;
-
+			static int bordes[4];
 			static Rectangle sourceRec;
 
+			static void iniciarBordes();
+			static void establecerSR();
 			static void actualizarSpriteNave();
 
+			static void iniciarBordes()
+			{
+				bordes[arriba] = nave.base;
+				bordes[abajo] = screenHeight - nave.base;
+			}
 			static void establecerSR()
 			{
 				framesCounter = 0;
@@ -43,12 +50,10 @@ namespace Juego
 					nave.pos.y - cos(nave.rotacion*DEG2RAD) };
 				nave.radioColision = nave.altura * 2 / 3 + 10;
 				nave.sprite = LoadTexture("res/assets/sprites/gameplay/nave.png");
-				nave.velocidad = (float)screenWidth/3;
-				nave.aceleracionBase = { 0.8f };
-				nave.aceleracion = { 0.0f,0.0f };
-				nave.anguloAceler = 0.0f;
+				nave.velocidad = 500.0f;
 				nave.detenida = true;
 				establecerSR();
+				iniciarBordes();
 			}
 
 			void moverNave()
@@ -60,12 +65,12 @@ namespace Juego
 					if(IsKeyDown(KEY_UP))
 					{
 						seMovio = siArriba;
-						nave.pos.y-=500*GetFrameTime();
+						nave.pos.y-=nave.velocidad*GetFrameTime();
 					}
 					else if (IsKeyDown(KEY_DOWN))
 					{
 						seMovio = siAbajo;
-						nave.pos.y+=500*GetFrameTime();
+						nave.pos.y+= nave.velocidad*GetFrameTime();
 					}
 					else
 					{
@@ -88,7 +93,7 @@ namespace Juego
 				
 			}
 
-			void actualizarSpriteNave()
+			static void actualizarSpriteNave()
 			{
 				if (framesCounter > 2)
 				{

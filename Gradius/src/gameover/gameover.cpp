@@ -50,7 +50,7 @@ namespace Juego
 			UnloadTexture(asteroideP);
 		}
 
-		void chequearMouse()
+		static void chequearMouse()
 		{
 			if (chequearBoton(jugarB, asteroideB, asteroideP, jugarB.width * 2,
 				jugarB.width * 3, jugarB.height * 3.5, jugarB.height * 4.5))

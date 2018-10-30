@@ -12,7 +12,6 @@ namespace Juego
 			float radio;
 			float vel;
 			float angulo;
-			Color color;
 			bool activo;
 			Texture2D sprite;
 			float rotacionCuerpo;
