@@ -7,6 +7,7 @@
 #include "disparos/disparos.h"
 #include "pausa/pausa.h"
 #include "fondo/fondo.h"
+#include "enemigo\enemigo.h"
 
 namespace Juego
 {
@@ -29,6 +30,7 @@ namespace Juego
 		{
 			iniciarNave();
 			iniciarAsteroides();
+			iniciarEnemigos();
 			inicializarDisparos();
 			inicializarFondo();
 			botonPausa = LoadTexture("res/assets/sprites/pausa/boton pausa.png");
@@ -55,6 +57,7 @@ namespace Juego
 			UnloadTexture(botonPausa);
 			UnloadTexture(controles);
 			desinicializarAsteroides();
+			desinicializarEnemigos();
 			desinicializarFondo();
 			desinicializarDisparos();
 			timer = 0;
@@ -97,8 +100,10 @@ namespace Juego
 			if (timer > 3)
 			{
 				chequearColisionConAsteroide();
+				chequearColisionConEnemigos();
 				chequearColisionConBordes();
 				moverAsteroides();
+				moverEnemigos();
 				actualizarDisparos();
 				moverDisparos();
 				actualizarFondo();
@@ -132,6 +137,7 @@ namespace Juego
 				dibujarDisparos();
 				dibujarNave();
 				dibujarAsteroides();
+				dibujarEnemigos();
 			}
 			if (!pausa)
 			{

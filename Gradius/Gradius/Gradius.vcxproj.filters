@@ -34,6 +34,9 @@
     <Filter Include="juego\botones">
       <UniqueIdentifier>{23fa61c1-bf58-4dbb-9b90-e84ccf3ca216}</UniqueIdentifier>
     </Filter>
+    <Filter Include="juego\gameplay\enemigo">
+      <UniqueIdentifier>{25a47405-4842-412a-b979-27666a74ce5c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\menu\menu.cpp">
@@ -72,6 +75,9 @@
     <ClCompile Include="..\src\botones\botones.cpp">
       <Filter>juego\botones</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\gameplay\enemigo\enemigo.cpp">
+      <Filter>juego\gameplay\enemigo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\menu\menu.h">
@@ -106,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="..\src\botones\botones.h">
       <Filter>juego\botones</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameplay\enemigo\enemigo.h">
+      <Filter>juego\gameplay\enemigo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
