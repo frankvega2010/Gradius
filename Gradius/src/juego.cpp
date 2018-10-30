@@ -202,7 +202,7 @@ namespace Juego
 
 	void dibujarSonido()
 	{
-		DrawTexture(sonido,screenWidth - screenWidth/10, screenHeight - screenHeight/6.66, WHITE);
+		DrawTexture(sonido,screenWidth - screenWidth/8, screenHeight - screenHeight/6, WHITE);
 	}
 
 	void dibujarJuego()
@@ -262,8 +262,8 @@ namespace Juego
 		musicaJuego = LoadMusicStream("res/assets/sonidos/menu.ogg");
 		PlayMusicStream(musicaJuego);
 #endif
-		unmute = LoadTexture("res/assets/sonidos/sonido.png");
-		mute = LoadTexture("res/assets/sonidos/mute.png");
+		unmute = LoadTexture("res/assets/sprites/sonido.png");
+		mute = LoadTexture("res/assets/sprites/mute.png");
 		sonido = unmute;
 	}
 

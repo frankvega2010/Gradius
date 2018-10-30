@@ -19,7 +19,7 @@ namespace Juego
 
 		void iniciarAsteroides()
 		{
-			aSprite = LoadTexture("res/assets/asteroide enemigo.png");
+			aSprite = LoadTexture("res/assets/sprites/gameplay/asteroide enemigo.png");
 #ifdef AUDIO
 			aColision = LoadSound("res/assets/sonidos/colision_asteroide.wav");
 #endif

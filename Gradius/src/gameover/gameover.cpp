@@ -14,9 +14,9 @@ namespace Juego
 		static Texture2D felicidades;
 		static Texture2D perdiste;
 		static Texture2D volverAJ;
-		static Texture2D volverAJP;
 		static Texture2D volverAM;
-		static Texture2D volverAMP;
+		static Texture2D asteroideP;
+		static Texture2D asteroideB;
 		static Texture2D jugarB;
 		static Texture2D volverMB;
 
@@ -24,15 +24,15 @@ namespace Juego
 
 		void inicializarGO()
 		{
-			fondo = LoadTexture("res/assets/fondo portada.png");
-			felicidades = LoadTexture("res/assets/gameover/felicidades.png");
-			perdiste = LoadTexture("res/assets/gameover/perdiste0.png");
-			volverAJ = LoadTexture("res/assets/gameover/volver a jugar.png");
-			volverAJP = LoadTexture("res/assets/gameover/volver a jugarP.png");
-			volverAM = LoadTexture("res/assets/pausa/volver al menu.png");
-			volverAMP = LoadTexture("res/assets/pausa/volver al menuP.png");
-			jugarB = volverAJ;
-			volverMB = volverAM;
+			fondo = LoadTexture("res/assets/sprites/gameover/gameover.png");
+			felicidades = LoadTexture("res/assets/sprites/gameover/felicidades.png");
+			perdiste = LoadTexture("res/assets/sprites/gameover/perdiste.png");
+			volverAJ = LoadTexture("res/assets/sprites/gameover/volver a jugar.png");
+			volverAM = LoadTexture("res/assets/sprites/gameover/volver al menu.png");
+			asteroideB = LoadTexture("res/assets/sprites/gameover/asteroideB.png");
+			asteroideP = LoadTexture("res/assets/sprites/gameover/asteroideP.png");
+			jugarB = asteroideB;
+			volverMB = asteroideB;
 			resultado = perdiste;
 		}
 
@@ -42,32 +42,28 @@ namespace Juego
 			UnloadTexture(felicidades);
 			UnloadTexture(perdiste);
 			UnloadTexture(volverAJ);
-			UnloadTexture(volverAJP);
 			UnloadTexture(volverAM);
-			UnloadTexture(volverAMP);
 			UnloadTexture(jugarB);
 			UnloadTexture(volverMB);
 			UnloadTexture(resultado);
+			UnloadTexture(asteroideB);
+			UnloadTexture(asteroideP);
 		}
 
 		void chequearMouse()
 		{
-			if (chequearBoton(jugarB, volverAJ, volverAJP,
-				(screenWidth - jugarB.width) / 2, (screenWidth - jugarB.width) / 2 + jugarB.width,
-				screenHeight - (jugarB.height * 2 + jugarB.height),
-				(screenHeight - (jugarB.height * 2 + jugarB.height)) + jugarB.height))
+			if (chequearBoton(jugarB, asteroideB, asteroideP, jugarB.width * 2,
+				jugarB.width * 3, jugarB.height * 3.5, jugarB.height * 4.5))
 			{
 				estado = juego;
 			}
-
-			if (chequearBoton(volverMB, volverAM, volverAMP,
-				(screenWidth - volverMB.width) / 2, (screenWidth - volverMB.width) / 2 + volverMB.width,
-				screenHeight - (volverMB.height + volverMB.height / 2),
-				screenHeight - (volverMB.height + volverMB.height / 2) + volverMB.height))
+			
+			if (chequearBoton(volverMB, asteroideB, asteroideP, volverMB.width * 2,
+				volverMB.width * 3, volverMB.height * 5.5, volverMB.height * 6.5))
 			{
 				estado = menu;
 			}
-				
+
 			if (Gameplay::gano)
 			{
 				resultado = felicidades;
@@ -86,9 +82,11 @@ namespace Juego
 		void dibujarGO()
 		{
 			DrawTexture(fondo, screenWidth / 2 - fondo.width / 2, screenHeight / 2 - fondo.height / 2, WHITE);
-			DrawTexture(resultado, (screenWidth - resultado.width) / 2, resultado.height * 2, WHITE);
-			DrawTexture(jugarB, (screenWidth - jugarB.width) / 2, screenHeight - (jugarB.height * 2 + jugarB.height), WHITE);
-			DrawTexture(volverMB, (screenWidth - volverMB.width) / 2, screenHeight - (volverMB.height + volverMB.height / 2), WHITE);
+			DrawTexture(resultado, (screenWidth - resultado.width) / 2, resultado.height * 3/4, WHITE);
+			DrawTexture(jugarB, jugarB.width * 2, jugarB.height * 3.5, WHITE);
+			DrawTexture(volverMB, volverMB.width * 2, volverMB.height * 5.5, WHITE);
+			DrawTexture(volverAJ, jugarB.width * 4, jugarB.height*3.5, WHITE);
+			DrawTexture(volverAM, volverMB.width * 4, volverMB.height*5.5, WHITE);
 		}
 	}
 }

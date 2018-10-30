@@ -49,7 +49,7 @@ namespace Juego
 		{
 			for (int i = 0; i < cantPiezasFondo; i++)
 			{
-				fondo[i].sprite = LoadTexture("res/assets/espacio.png");
+				fondo[i].sprite = LoadTexture("res/assets/sprites/gameplay/espacio.png");
 				fondo[i].vel = 100.0f;
 			}
 			
@@ -59,7 +59,7 @@ namespace Juego
 
 			for (int i = 0; i < cantAF; i++)
 			{
-				asteroidesFondo[i].sprite = LoadTexture("res/assets/asteroide_fondo.png");
+				asteroidesFondo[i].sprite = LoadTexture("res/assets/sprites/gameplay/asteroide_fondo.png");
 				asteroidesFondo[i].pos.x = GetRandomValue(screenWidth / 2, screenWidth);
 				asteroidesFondo[i].pos.y = GetRandomValue(0, screenHeight);
 				asteroidesFondo[i].activo = true;
@@ -75,7 +75,7 @@ namespace Juego
 
 			inicializarLimites();
 
-			planeta.sprite = LoadTexture("res/assets/planetas_constelaciones.png");
+			planeta.sprite = LoadTexture("res/assets/sprites/gameplay/planetas_constelaciones.png");
 			planeta.vel = 80.0f;
 			planeta.sourceRec.x = 0;
 			planeta.sourceRec.y = 0;

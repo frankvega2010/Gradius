@@ -16,7 +16,7 @@ namespace Juego
 
 		void inicializarDisparos()
 		{
-			dSprite = LoadTexture("res/assets/disparo.png");
+			dSprite = LoadTexture("res/assets/sprites/gameplay/disparo.png");
 			for (int i = 0; i < cantDisparos; i++)
 			{
 				disparos[i].radio = (float)screenHeight*screenWidth/135000;

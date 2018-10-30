@@ -27,6 +27,7 @@ namespace Juego
 
 		static void iniciarBordes();
 		static void dibujarBotonPausa();
+		static void actualizarTiempo();
 
 		void iniciarBordes()
 		{
@@ -41,8 +42,8 @@ namespace Juego
 			iniciarAsteroides();
 			inicializarDisparos();
 			inicializarFondo();
-			botonPausa = LoadTexture("res/assets/pausa/boton pausa.png");
-			controles = LoadTexture("res/assets/controles gradius.png");
+			botonPausa = LoadTexture("res/assets/sprites/pausa/boton pausa.png");
+			controles = LoadTexture("res/assets/sprites/gameplay/controles gradius.png");
 #ifdef AUDIO
 			musicaFondo = LoadMusicStream("res/assets/sonidos/stage.ogg");
 			if (haySonido)
@@ -76,16 +77,17 @@ namespace Juego
 			{
 				moverNave();
 
-				cambiarPausa();
-
-				if (pausa)
-				{
-					chequearInputPausa();
-				}
-				else
+				if (!pausa)
 				{
 					activarDisparos();
 				}
+			}
+
+			cambiarPausa();
+
+			if (pausa)
+			{
+				chequearInputPausa();
 			}
 		}
 

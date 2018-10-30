@@ -23,11 +23,11 @@ namespace Juego
 
 		void iniciarComponentesPausa()
 		{
-			botonDespausa = LoadTexture("res/assets/pausa/boton despausa.png");
-			botonMenu = LoadTexture("res/assets/pausa/volver al menu.png");
-			botonMenuP = LoadTexture("res/assets/pausa/volver al menuP.png");
-			botonReiniciar = LoadTexture("res/assets/pausa/reiniciar juego.png");
-			botonReiniciarP = LoadTexture("res/assets/pausa/reiniciar juegoP.png");
+			botonDespausa = LoadTexture("res/assets/sprites/pausa/boton despausa.png");
+			botonMenu = LoadTexture("res/assets/sprites/pausa/volver al menu.png");
+			botonMenuP = LoadTexture("res/assets/sprites/pausa/volver al menuP.png");
+			botonReiniciar = LoadTexture("res/assets/sprites/pausa/reiniciar juego.png");
+			botonReiniciarP = LoadTexture("res/assets/sprites/pausa/reiniciar juegoP.png");
 			reiniciarB = botonReiniciar;
 			menuB = botonMenu;
 		}
@@ -87,7 +87,7 @@ namespace Juego
 
 			DrawTexture(reiniciarB, (screenWidth - reiniciarB.width) / 2, reiniciarB.height, WHITE);
 			DrawTexture(menuB, (screenWidth - menuB.width) / 2, reiniciarB.height * 4, WHITE);
-			DrawTexture(botonDespausa, 30, 30, WHITE);
+			DrawTexture(botonDespausa, screenWidth / 45, screenHeight / 30, WHITE);
 		}
 	}
 }

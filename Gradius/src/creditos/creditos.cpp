@@ -15,9 +15,9 @@ namespace Juego
 
 		void inicializarCreditos()
 		{
-			creditosT = LoadTexture("res/assets/creditos/creditos.png");
-			botonAtras = LoadTexture("res/assets/creditos/atras.png");
-			botonAtrasP = LoadTexture("res/assets/creditos/atrasP.png");
+			creditosT = LoadTexture("res/assets/sprites/creditos/creditos.png");
+			botonAtras = LoadTexture("res/assets/sprites/creditos/atras.png");
+			botonAtrasP = LoadTexture("res/assets/sprites/creditos/atrasP.png");
 			atrasB = botonAtras;
 		}
 		
@@ -31,7 +31,7 @@ namespace Juego
 
 		void chequearInputCreditos()
 		{
-			if (chequearBoton(atrasB, botonAtras, botonAtrasP, screenWidth / 53, screenWidth / 53 + atrasB.width,
+			if (chequearBoton(atrasB, botonAtras, botonAtrasP, screenWidth / 50, screenWidth / 50 + atrasB.width,
 				screenHeight / 30, screenHeight / 30 + atrasB.height))
 			{
 				estado = menu;
@@ -42,7 +42,7 @@ namespace Juego
 		void dibujarCreditos()
 		{
 			DrawTexture(creditosT, 0, 0, WHITE);
-			DrawTexture(atrasB, screenWidth / 53, screenHeight / 30, WHITE);
+			DrawTexture(atrasB, screenWidth / 50, screenHeight / 30, WHITE);
 		}
 	}
 }
