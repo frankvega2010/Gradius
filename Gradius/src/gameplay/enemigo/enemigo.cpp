@@ -19,10 +19,10 @@ namespace Juego
 			aSprite = LoadTexture("res/assets/sprites/gameplay/asteroide enemigo.png");
 
 			enemigoAntiAereo.size = {50,50};
-			enemigoAntiAereo.pos.x = (float)screenWidth + enemigoAntiAereo.size.x;
+			enemigoAntiAereo.pos.x = 0 - enemigoAntiAereo.size.x;
 			enemigoAntiAereo.pos.y = screenHeight - enemigoAntiAereo.size.y;
 			enemigoAntiAereo.sprite = aSprite;
-			enemigoAntiAereo.vel = 200.0f;
+			enemigoAntiAereo.vel = 350.0f;
 			enemigoAntiAereo.activo = false;
 			//enemigoAntiAereo.puedeDisparar = false;
 		}
@@ -37,9 +37,9 @@ namespace Juego
 
 		void moverEnemigos()
 		{
-			enemigoAntiAereo.pos.x -= enemigoAntiAereo.vel*GetFrameTime();
-
-			if (enemigoAntiAereo.pos.x < 0 - enemigoAntiAereo.size.x * 2) enemigoAntiAereo.pos.x = (float)screenWidth + enemigoAntiAereo.size.x;
+			enemigoAntiAereo.pos.x += enemigoAntiAereo.vel*GetFrameTime();
+			//0 - enemigoAntiAereo.size.x
+			if (enemigoAntiAereo.pos.x > screenWidth + enemigoAntiAereo.size.x * 2) enemigoAntiAereo.pos.x = 0 - enemigoAntiAereo.size.x;
 		}
 
 		void chequearColisionConEnemigos()
@@ -86,7 +86,7 @@ namespace Juego
 			if (!enemigoAntiAereo.activo)
 			{
 				enemigoAntiAereo.activo = true;
-				enemigoAntiAereo.pos.x = screenWidth + enemigoAntiAereo.size.x;
+				enemigoAntiAereo.pos.x = 0 - enemigoAntiAereo.size.x;
 			}
 //#ifdef AUDIO
 //			if (colisiono && haySonido)

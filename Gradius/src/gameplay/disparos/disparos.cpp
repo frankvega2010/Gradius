@@ -78,7 +78,7 @@ namespace Juego
 				misilADisp++;
 			}
 
-			if (enemigoAntiAereo.pos.x <= screenWidth / 1.5f) misilesEnemigos[0].activo = true;
+			if (enemigoAntiAereo.pos.x >= screenWidth / 1.5f) misilesEnemigos[0].activo = true;
 		}
 
 		void moverDisparos()
@@ -92,7 +92,7 @@ namespace Juego
 				}
 				misilesEnemigos[0].pos.x -= misilesEnemigos[0].velocidad*GetFrameTime();
 				misilesEnemigos[0].pos.y -= misilesEnemigos[0].velocidadY*GetFrameTime();
-				if ((misilesEnemigos[0].pos.y < 0 - misilesEnemigos[0].radio|| misilesEnemigos[0].pos.x < 0 - misilesEnemigos[0].radio ) && enemigoAntiAereo.pos.x >= screenWidth / 1.5f)
+				if ((misilesEnemigos[0].pos.y < 0 - misilesEnemigos[0].radio|| misilesEnemigos[0].pos.x < 0 - misilesEnemigos[0].radio ) && enemigoAntiAereo.pos.x <= screenWidth / 1.5f)
 				{
 					misilesEnemigos[0].activo = false;
 					updateLocation = true;
