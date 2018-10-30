@@ -16,7 +16,7 @@ namespace Juego
 		int asteroidesDestruidos = 0;
 		static Asteroide asteroidesG[cantAsteroidesG];
 		static Texture2D aSprite;
-		static Sound aColision;
+		Sound aColision;
 
 		void iniciarAsteroides()
 		{

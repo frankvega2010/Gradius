@@ -20,10 +20,10 @@ namespace Juego
 			aSprite = LoadTexture("res/assets/sprites/gameplay/asteroide enemigo.png");
 
 			enemigoAntiAereo.size = {50,50};
-			enemigoAntiAereo.pos.x = 0 - enemigoAntiAereo.size.x;
+			enemigoAntiAereo.pos.x = GetRandomValue((0 - enemigoAntiAereo.size.x), ((-((float)screenWidth*1.8f)) - enemigoAntiAereo.size.x));
 			enemigoAntiAereo.pos.y = screenHeight - enemigoAntiAereo.size.y;
 			enemigoAntiAereo.sprite = aSprite;
-			enemigoAntiAereo.vel = 350.0f;
+			enemigoAntiAereo.vel = GetRandomValue(250.0f, 350.0f);
 			enemigoAntiAereo.activo = false;
 			//enemigoAntiAereo.puedeDisparar = false;
 		}
@@ -40,7 +40,11 @@ namespace Juego
 		{
 			enemigoAntiAereo.pos.x += enemigoAntiAereo.vel*GetFrameTime();
 			//0 - enemigoAntiAereo.size.x
-			if (enemigoAntiAereo.pos.x > screenWidth + enemigoAntiAereo.size.x * 2) enemigoAntiAereo.pos.x = 0 - enemigoAntiAereo.size.x;
+			if (enemigoAntiAereo.pos.x > screenWidth + enemigoAntiAereo.size.x * 2)
+			{
+				enemigoAntiAereo.vel = GetRandomValue(250.0f, 350.0f);
+				enemigoAntiAereo.pos.x = GetRandomValue((0 - enemigoAntiAereo.size.x), ((-((float)screenWidth*1.8f)) - enemigoAntiAereo.size.x));
+			}
 		}
 
 		void chequearColisionConEnemigos()
@@ -97,14 +101,15 @@ namespace Juego
 			if (!enemigoAntiAereo.activo)
 			{
 				enemigoAntiAereo.activo = true;
-				enemigoAntiAereo.pos.x = 0 - enemigoAntiAereo.size.x;
+				enemigoAntiAereo.pos.x = GetRandomValue((0 - enemigoAntiAereo.size.x), ((-((float)screenWidth*1.8f)) - enemigoAntiAereo.size.x));
+				enemigoAntiAereo.vel = GetRandomValue(250.0f, 350.0f);
 			}
-//#ifdef AUDIO
-//			if (colisiono && haySonido)
-//			{
-//				PlaySound(aColision);
-//			}
-//#endif
+#ifdef AUDIO
+			if (colisiono && haySonido)
+			{
+				PlaySound(aColision);
+			}
+#endif
 		}
 
 		void dibujarEnemigos()

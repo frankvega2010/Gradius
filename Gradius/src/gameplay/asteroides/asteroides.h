@@ -22,6 +22,8 @@ namespace Juego
 		extern int cantEnemiesTarget;
 		extern int asteroidesDestruidos;
 
+		extern Sound aColision;
+
 		void iniciarAsteroides();
 		void desinicializarAsteroides();
 		void moverAsteroides();
