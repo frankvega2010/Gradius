@@ -1,17 +1,17 @@
 # Gradius
 Juego Gradius codeado en C++
 
-![](https://github.com/PatoDL/Gradius/tree/master/Gradius/res/assets/Logo.png)
+![Logo](https://github.com/PatoDL/Gradius/blob/master/Gradius/res/assets/Logo.png)
 
 Todo el arte grafico que se puede apreciar en el juego fue hecho por mi.
 
 screenshots:
 
-![](https://github.com/PatoDL/Gradius/tree/master/Gradius/res/assets/screenshots/screen1.jpg)
+![screen1](https://github.com/PatoDL/Gradius/blob/master/Gradius/res/assets/screenshots/screen1.jpg)
 
-![](https://github.com/PatoDL/Gradius/tree/master/Gradius/res/assets/screenshots/screen2.jpg)
+![screen2](https://github.com/PatoDL/Gradius/blob/master/Gradius/res/assets/screenshots/screen2.jpg)
 
-![](https://github.com/PatoDL/Gradius/tree/master/Gradius/res/assets/screenshots/screen3.jpg)
+![screen3](https://github.com/PatoDL/Gradius/blob/master/Gradius/res/assets/screenshots/screen3.jpg)
 
 Contacto:
 
