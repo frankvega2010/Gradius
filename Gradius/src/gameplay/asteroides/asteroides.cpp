@@ -118,6 +118,18 @@ namespace Juego
 							asteroidesDestruidos++;
 						}
 					}
+
+					for (int k = 0; k < cantMisiles; k++)
+					{
+						if (CheckCollisionCircles(mortero[k].pos, mortero[k].radio, asteroidesG[i].pos, asteroidesG[i].radio))
+						{
+							asteroidesG[i].activo = false;
+							mortero[k].activo = false;
+							colisiono = true;
+
+							asteroidesDestruidos++;
+						}
+					}
 				}
 
 			}

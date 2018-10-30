@@ -13,12 +13,15 @@ namespace Juego
 			float radio;
 			bool activo;
 			float velocidad;
+			float velocidadY;
 			Texture2D sprite;
 			float rotacionSprite;
 		};
 
 		const int cantDisparos = 6;
+		const int cantMisiles = 5;
 		extern Disparo disparos[cantDisparos];
+		extern Disparo mortero[cantMisiles];
 
 		void inicializarDisparos();
 		void desinicializarDisparos();
