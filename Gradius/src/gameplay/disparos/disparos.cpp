@@ -82,20 +82,21 @@ namespace Juego
 		{
 			if (IsKeyPressed(KEY_F))
 			{
-				#ifdef AUDIO
-				PlaySound(shoot01);
-				#endif
-
-				disparos[balaADisp].activo = true;
+				if (!disparos[balaADisp].activo)
+				{
+					PlaySound(shoot01);
+					disparos[balaADisp].activo = true;
+				}
 				balaADisp++;
 			}
 
 			if (IsKeyPressed(KEY_SPACE))
 			{
-				#ifdef AUDIO
-				PlaySound(shoot02);
-				#endif
-				mortero[misilADisp].activo = true;
+				if (!mortero[misilADisp].activo)
+				{
+					PlaySound(shoot02);
+					mortero[misilADisp].activo = true;
+				}
 				misilADisp++;
 			}
 
