@@ -14,9 +14,6 @@ namespace Juego
 		static int misilADisp = 0;
 		static bool updateLocation = true;
 		static bool activarSonidoDisparo = false;
-		//static bool misilEstaAbajo = false;
-		//static int speedDe
-		//enemigoAntiAereo.puedeDisparar = false;
 		static Texture2D dSprite;
 
 		Disparo disparos[cantDisparos];

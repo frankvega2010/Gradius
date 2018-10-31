@@ -15,13 +15,9 @@ namespace Juego
 
 		static Texture2D aSprite;
 
-		//static Sound shoot03;
-
 		void iniciarEnemigos()
 		{
 			aSprite = LoadTexture("res/assets/sprites/gameplay/cannon01.png");
-
-			//shoot03 = LoadSound("res/assets/sonidos/shoot03.wav");
 
 			enemigoAntiAereo.size = {50,50};
 			enemigoAntiAereo.pos.x = GetRandomValue((0 - enemigoAntiAereo.size.x), ((-((float)screenWidth*1.8f)) - enemigoAntiAereo.size.x));
@@ -29,12 +25,11 @@ namespace Juego
 			enemigoAntiAereo.sprite = aSprite;
 			enemigoAntiAereo.vel = GetRandomValue(250.0f, 350.0f);
 			enemigoAntiAereo.activo = false;
-			//enemigoAntiAereo.puedeDisparar = false;
 		}
 
 		void desinicializarEnemigos()
 		{
-			//UnloadSound(shoot03);
+			UnloadTexture(aSprite);
 		}
 
 		void moverEnemigos()

@@ -10,20 +10,12 @@ namespace Juego
 		{
 			Vector2 pos;
 			Vector2 size;
-			//float radio;
 			float vel;
-			//float angulo;
 			bool activo;
-			//bool puedeDisparar;
 			Texture2D sprite;
-			//float rotacionCuerpo;
-			//Rectangle sourceRec; // solo para los del fondo
 		};
 
 		extern enemigo enemigoAntiAereo;
-
-		//extern const int cantAsteroidesG;
-		//extern int asteroidesDestruidos;
 
 		void iniciarEnemigos();
 		void desinicializarEnemigos();

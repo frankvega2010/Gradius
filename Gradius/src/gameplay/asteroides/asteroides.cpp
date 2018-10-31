@@ -28,10 +28,8 @@ namespace Juego
 			{
 				asteroidesG[i].radio = 60;
 
-				//asteroidesG[i].pos = { (float)screenWidth / asteroidesG[0].radio * 40,asteroidesG[i].radio*(i+1)*3};
-
 				asteroidesG[i].pos.x = GetRandomValue((float)screenWidth,((float)screenWidth*1.8f));
-				asteroidesG[i].pos.y = GetRandomValue((0 + asteroidesG[i].radio), ((float)screenHeight - asteroidesG[i].radio));// { (float)screenWidth / asteroidesG[0].radio * 40,asteroidesG[i].radio*(i + 1) * 3 };
+				asteroidesG[i].pos.y = GetRandomValue((0 + asteroidesG[i].radio), ((float)screenHeight - asteroidesG[i].radio));
 
 				asteroidesG[i].activo = true;
 
@@ -53,9 +51,6 @@ namespace Juego
 			{
 				UnloadTexture(asteroidesG[i].sprite);
 			}
-//#ifdef AUDIO
-//			UnloadSound(aColision);
-//#endif
 		}
 
 		void moverAsteroides()
@@ -95,12 +90,6 @@ namespace Juego
 					{
 						asteroidesG[i].rotacionCuerpo-= velocidadRotacion * GetFrameTime();
 					}
-
-					//if (asteroidesG[i].pos.x < 0 - asteroidesG[i].radio)
-					//{
-					//	asteroidesG[i].pos.x = GetRandomValue((float)screenWidth, ((float)screenWidth*1.5));
-					//	asteroidesG[i].pos.y = GetRandomValue((0 + asteroidesG[i].radio), ((float)screenHeight - asteroidesG[i].radio));
-					//}
 				}
 			}
 		}
@@ -150,7 +139,6 @@ namespace Juego
 
 				if (!asteroidesG[i].activo)
 				{
-					//asteroidesG[i].pos = { (float)screenWidth / asteroidesG[0].radio * 40,asteroidesG[i].radio*(i + 1) * 3 };
 					asteroidesG[i].pos.x = GetRandomValue((float)screenWidth + asteroidesG[i].radio, ((float)screenWidth*2.0));
 					asteroidesG[i].pos.y = GetRandomValue((0 + asteroidesG[i].radio), ((float)screenHeight - asteroidesG[i].radio));
 					asteroidesG[i].vel = GetRandomValue(-200.0f, -400.0f);
