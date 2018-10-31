@@ -22,7 +22,7 @@ namespace Juego
 		{
 			aSprite = LoadTexture("res/assets/sprites/gameplay/asteroide enemigo.png");
 #ifdef AUDIO
-			aColision = LoadSound("res/assets/sonidos/colision_asteroide.wav");
+			aColision = LoadSound("res/assets/sonidos/explosion.wav");
 #endif
 			for (int i = 0; i < cantAsteroidesG; i++)
 			{

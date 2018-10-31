@@ -13,6 +13,7 @@ namespace Juego
 		static int balaADisp = 0;
 		static int misilADisp = 0;
 		static bool updateLocation = true;
+		static bool activarSonidoDisparo = false;
 		//static bool misilEstaAbajo = false;
 		//static int speedDe
 		//enemigoAntiAereo.puedeDisparar = false;
@@ -25,6 +26,7 @@ namespace Juego
 
 		static Sound shoot01;
 		static Sound shoot02;
+		static Sound shoot03;
 
 		void inicializarDisparos()
 		{
@@ -33,6 +35,7 @@ namespace Juego
 
 			shoot01 = LoadSound("res/assets/sonidos/shoot01.wav");
 			shoot02 = LoadSound("res/assets/sonidos/shoot02.wav");
+			shoot03 = LoadSound("res/assets/sonidos/shoot03.wav");
 
 			for (int i = 0; i < cantDisparos; i++)
 			{
@@ -48,8 +51,8 @@ namespace Juego
 			{
 				mortero[i].radio = (float)screenHeight*screenWidth / 135000;
 				mortero[i].activo = false;
-				mortero[i].velocidad = nave.velocidad * 1.5f;// / 2;
-				mortero[i].velocidadY = nave.velocidad * 1.2f;// / 2;
+				mortero[i].velocidad = nave.velocidad * 1.5f;
+				mortero[i].velocidadY = nave.velocidad * 1.2f;
 				mortero[i].sprite = dSprite;
 				mortero[i].rotacionSprite = 0.0f;
 			}
@@ -65,15 +68,14 @@ namespace Juego
 
 		void desinicializarDisparos()
 		{
-			
 			UnloadTexture(dSprite);
-			for (int i = 0; i < cantDisparos; i++) UnloadTexture(disparos[i].sprite);
 
+			for (int i = 0; i < cantDisparos; i++) UnloadTexture(disparos[i].sprite);
 			for (int i = 0; i < cantMisiles; i++) UnloadTexture(mortero[i].sprite);
 
 			UnloadSound(shoot01);
 			UnloadSound(shoot02);
-			
+			UnloadSound(shoot03);
 		}
 
 		void activarDisparos()
@@ -90,14 +92,23 @@ namespace Juego
 
 			if (IsKeyPressed(KEY_SPACE))
 			{
-#ifdef AUDIO
+				#ifdef AUDIO
 				PlaySound(shoot02);
-#endif
+				#endif
 				mortero[misilADisp].activo = true;
 				misilADisp++;
 			}
 
-			if (enemigoAntiAereo.pos.x >= screenWidth / 1.5f) misilesEnemigos[0].activo = true;
+			if (enemigoAntiAereo.pos.x >= screenWidth / 1.5f) 
+			{
+				misilesEnemigos[0].activo = true;
+			} 
+
+			if (!activarSonidoDisparo) 
+			{
+				activarSonidoDisparo = true;
+				PlaySound(shoot03);
+			}
 		}
 
 		void moverDisparos()
@@ -107,7 +118,8 @@ namespace Juego
 				if (updateLocation)
 				{
 					misilesEnemigos[0].pos = { enemigoAntiAereo.pos.x,enemigoAntiAereo.pos.y };
-					updateLocation = false;
+					updateLocation = false;	
+					activarSonidoDisparo = false;
 				}
 				misilesEnemigos[0].pos.x -= misilesEnemigos[0].velocidad*GetFrameTime();
 				misilesEnemigos[0].pos.y -= misilesEnemigos[0].velocidadY*GetFrameTime();
@@ -185,7 +197,7 @@ namespace Juego
 				mortero[i].rotacionSprite += 400.0f*GetFrameTime();
 			}
 
-			if (misilADisp == cantMisiles - 1) //reinicia los disparos
+			if (misilADisp == cantMisiles - 1) //reinicia los misiles
 			{
 				misilADisp = 0;
 			}
