@@ -23,10 +23,16 @@ namespace Juego
 
 		Disparo misilesEnemigos[cantMisilesEnemigos];
 
+		static Sound shoot01;
+		static Sound shoot02;
+
 		void inicializarDisparos()
 		{
 			updateLocation = true;
 			dSprite = LoadTexture("res/assets/sprites/gameplay/disparo.png");
+
+			shoot01 = LoadSound("res/assets/sonidos/shoot01.wav");
+			shoot02 = LoadSound("res/assets/sonidos/shoot02.wav");
 
 			for (int i = 0; i < cantDisparos; i++)
 			{
@@ -59,22 +65,34 @@ namespace Juego
 
 		void desinicializarDisparos()
 		{
+			
 			UnloadTexture(dSprite);
 			for (int i = 0; i < cantDisparos; i++) UnloadTexture(disparos[i].sprite);
 
 			for (int i = 0; i < cantMisiles; i++) UnloadTexture(mortero[i].sprite);
+
+			UnloadSound(shoot01);
+			UnloadSound(shoot02);
+			
 		}
 
 		void activarDisparos()
 		{
 			if (IsKeyPressed(KEY_F))
 			{
+				#ifdef AUDIO
+				PlaySound(shoot01);
+				#endif
+
 				disparos[balaADisp].activo = true;
 				balaADisp++;
 			}
 
 			if (IsKeyPressed(KEY_SPACE))
 			{
+#ifdef AUDIO
+				PlaySound(shoot02);
+#endif
 				mortero[misilADisp].activo = true;
 				misilADisp++;
 			}

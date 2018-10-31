@@ -53,12 +53,13 @@ namespace Juego
 #ifdef AUDIO
 			StopMusicStream(musicaFondo);
 			UnloadMusicStream(musicaFondo);
+			UnloadSound(aColision); //problem here fix this crap
 #endif
 			UnloadTexture(nave.sprite);
 			UnloadTexture(botonPausa);
 			UnloadTexture(controles);
-			desinicializarAsteroides();
 			desinicializarEnemigos();
+			desinicializarAsteroides();
 			desinicializarFondo();
 			desinicializarDisparos();
 			timer = 0;

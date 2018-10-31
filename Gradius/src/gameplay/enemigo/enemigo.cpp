@@ -31,9 +31,7 @@ namespace Juego
 		void desinicializarEnemigos()
 		{
 
-//#ifdef AUDIO
-//			UnloadSound(aColision);
-//#endif
+
 		}
 
 		void moverEnemigos()

@@ -53,9 +53,9 @@ namespace Juego
 			{
 				UnloadTexture(asteroidesG[i].sprite);
 			}
-#ifdef AUDIO
-			UnloadSound(aColision);
-#endif
+//#ifdef AUDIO
+//			UnloadSound(aColision);
+//#endif
 		}
 
 		void moverAsteroides()
