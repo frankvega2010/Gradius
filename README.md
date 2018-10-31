@@ -20,7 +20,7 @@ Todo el arte grafico que se puede apreciar en el juego fue hecho por PatoDL ( ht
 
 ## Release:
 
-Proximamente...
+Github: https://github.com/frankvega2010/Gradius/releases/tag/v1.1
 
 ### Screenshots:
 
