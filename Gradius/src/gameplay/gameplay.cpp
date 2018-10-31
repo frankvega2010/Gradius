@@ -98,7 +98,7 @@ namespace Juego
 					UpdateMusicStream(musicaFondo);
 				}
 #endif
-			if (timer > 3)
+			if (timer > 5)
 			{
 				chequearColisionConAsteroide();
 				chequearColisionConEnemigos();
@@ -129,17 +129,18 @@ namespace Juego
 
 		void dibujarGameplay()
 		{
-			if (timer <= 3)
+			if (timer <= 5)
 			{
 				DrawTexture(controles, 0, 0, WHITE);
 			}
 			else
 			{
 				dibujarFondo();
-				dibujarDisparos();
 				dibujarNave();
 				dibujarAsteroides();
+				dibujarDisparos();
 				dibujarEnemigos();
+
 				DrawText(FormatText("Targets Left: %i", cantEnemiesTarget), 80, 20, 50, WHITE);
 			}
 			if (!pausa)

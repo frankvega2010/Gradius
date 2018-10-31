@@ -67,13 +67,13 @@ namespace Juego
 
 		void activarDisparos()
 		{
-			if (IsKeyPressed(KEY_SPACE))
+			if (IsKeyPressed(KEY_F))
 			{
 				disparos[balaADisp].activo = true;
 				balaADisp++;
 			}
 
-			if (IsKeyPressed(KEY_F))
+			if (IsKeyPressed(KEY_SPACE))
 			{
 				mortero[misilADisp].activo = true;
 				misilADisp++;

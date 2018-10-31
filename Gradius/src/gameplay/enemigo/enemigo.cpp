@@ -39,7 +39,6 @@ namespace Juego
 		void moverEnemigos()
 		{
 			enemigoAntiAereo.pos.x += enemigoAntiAereo.vel*GetFrameTime();
-			//0 - enemigoAntiAereo.size.x
 			if (enemigoAntiAereo.pos.x > screenWidth + enemigoAntiAereo.size.x * 2)
 			{
 				enemigoAntiAereo.vel = GetRandomValue(250.0f, 350.0f);
@@ -120,7 +119,6 @@ namespace Juego
 			sourceRec.x = 0.0f;
 			sourceRec.y = 0.0f;
 
-			//DrawRectangleRec({ enemigoAntiAereo.pos.x,enemigoAntiAereo.pos.y,enemigoAntiAereo.size.x,enemigoAntiAereo.size.y }, { 0,0,0,0 });
 			if (enemigoAntiAereo.activo)
 			{
 				DrawTexturePro(enemigoAntiAereo.sprite,
