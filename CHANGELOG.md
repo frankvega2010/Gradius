@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1] - 30-10-2018
+### Added
+- Nuevo Enemigo "Maquina Antiaerea" , un enemigo que pasa por la parte inferior de la pantalla .
+- Nuevo Armamento "Mortero" , se utiliza con la tecla "Espacio" y resulta util contra las maquinas antiaereas.
+- Sonidos Nuevos.
+- Nuevo Sprite para el enemigo nuevo.
+
+### Changed
+- Objetivo del juego se cambio a uno mas extenso, ahora el jugador debera destruir 50 enemigos en vez de 3 asteroides.
+
+### Fixed
+- Los Asteroides iban a la misma velocidad y en posiciones determinadas. Ahora los enemigos se ubican en lugares al azar.
+
 ## [1.0] - 28-10-2018
 - ahora el gameplay posee una pantalla de controles que explica como jugar
 - solucionados los errores de carga de texturas entre pantalla y pantalla
