@@ -42,7 +42,7 @@ namespace Juego
 				PlayMusicStream(musicaFondo);
 			}
 #endif
-			cantEnemiesTarget = 30;
+			cantEnemiesTarget = 50;
 			gameOver = false;
 			pausa = false;
 			gano = false;
@@ -67,7 +67,7 @@ namespace Juego
 
 		void chequearInputGP()
 		{
-			if (timer > 3)
+			if (timer > 5)
 			{
 				moverNave();
 
@@ -113,7 +113,7 @@ namespace Juego
 				{
 					gano = true;
 					gameOver = true;
-					cantEnemiesTarget = 30;
+					cantEnemiesTarget = 50;
 				}
 
 				if (gameOver)

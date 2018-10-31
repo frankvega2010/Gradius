@@ -12,7 +12,7 @@ namespace Juego
 	namespace Gameplay
 	{
 		const int cantAsteroidesG = 3;
-		int cantEnemiesTarget = 30;
+		int cantEnemiesTarget = 50;
 		int asteroidesDestruidos = 0;
 		static Asteroide asteroidesG[cantAsteroidesG];
 		static Texture2D aSprite;
