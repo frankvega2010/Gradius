@@ -53,7 +53,7 @@ namespace Juego
 #ifdef AUDIO
 			StopMusicStream(musicaFondo);
 			UnloadMusicStream(musicaFondo);
-			UnloadSound(aColision); //problem here fix this crap
+			UnloadSound(aColision);
 #endif
 			UnloadTexture(nave.sprite);
 			UnloadTexture(botonPausa);
@@ -142,7 +142,7 @@ namespace Juego
 				dibujarDisparos();
 				dibujarEnemigos();
 
-				DrawText(FormatText("Targets Left: %i", cantEnemiesTarget), 80, 20, 50, WHITE);
+				DrawText(FormatText("Objetivos : %i", cantEnemiesTarget), 80, 20, 50, WHITE);
 			}
 			if (!pausa)
 			{

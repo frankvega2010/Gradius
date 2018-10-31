@@ -197,7 +197,7 @@ namespace Juego
 
 	static void dibujarVersion()
 	{
-		DrawText("v1.0", screenWidth - screenWidth/10, screenHeight/15, screenHeight*screenWidth/27000, WHITE);
+		DrawText("v1.1", screenWidth - screenWidth/10, screenHeight/15, screenHeight*screenWidth/27000, WHITE);
 	}
 
 	static void dibujarSonido()
